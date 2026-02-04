@@ -3,124 +3,150 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Naveen & Manisha's Jaipur Valentine Journey</title>
+    <title>A Beautiful Conversation</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Arial Rounded MT Bold', 'Arial', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
         body {
-            background-color: #ffe6f2;
-            color: #8a0a3a;
+            background: linear-gradient(135deg, #ffe6f0 0%, #fff0f9 100%);
+            color: #5a0033;
             min-height: 100vh;
             overflow-x: hidden;
             position: relative;
         }
         
         .container {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
-            padding: 20px;
-            text-align: center;
+            padding: 30px 20px;
             position: relative;
             z-index: 10;
         }
         
-        header {
-            padding: 20px;
-            background: linear-gradient(to right, #ff66b2, #ff3385);
-            border-radius: 20px;
-            margin-bottom: 30px;
-            box-shadow: 0 10px 25px rgba(255, 0, 102, 0.2);
-            color: white;
-            border: 5px solid white;
-        }
-        
-        h1 {
-            font-size: 2.8rem;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-        }
-        
-        h2 {
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-            color: #cc0066;
-        }
-        
-        .subtitle {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-            color: #ffccdd;
-        }
-        
-        .story-box {
-            background-color: white;
-            border-radius: 20px;
-            padding: 30px;
-            margin-bottom: 30px;
-            box-shadow: 0 10px 30px rgba(255, 0, 102, 0.15);
-            border: 3px solid #ff66b2;
+        .conversation-wrapper {
+            background-color: rgba(255, 255, 255, 0.92);
+            border-radius: 30px;
+            padding: 40px;
+            box-shadow: 0 15px 40px rgba(255, 100, 175, 0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 182, 193, 0.3);
             position: relative;
             overflow: hidden;
-            min-height: 220px;
+        }
+        
+        .question-box {
+            text-align: center;
+            margin-bottom: 50px;
+            min-height: 300px;
             display: flex;
             flex-direction: column;
             justify-content: center;
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .question-number {
+            font-size: 1rem;
+            color: #ff66a3;
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+            font-weight: 600;
         }
         
         .question {
-            font-size: 1.8rem;
-            margin-bottom: 30px;
-            color: #cc0066;
-            font-weight: bold;
-            padding: 0 10px;
-            min-height: 80px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .buttons {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-top: 20px;
+            font-size: 2.2rem;
+            line-height: 1.4;
+            margin-bottom: 40px;
+            color: #99004d;
+            font-weight: 300;
+            padding: 0 20px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
             position: relative;
         }
         
-        .btn {
-            padding: 15px 40px;
+        .question::before {
+            content: "“";
+            font-size: 5rem;
+            color: #ffb3d9;
+            position: absolute;
+            left: -10px;
+            top: -40px;
+            opacity: 0.3;
+        }
+        
+        .question::after {
+            content: "”";
+            font-size: 5rem;
+            color: #ffb3d9;
+            position: absolute;
+            right: -10px;
+            bottom: -60px;
+            opacity: 0.3;
+        }
+        
+        .options {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 40px;
+            position: relative;
+        }
+        
+        .option-btn {
+            padding: 18px 50px;
             font-size: 1.5rem;
             border: none;
-            border-radius: 50px;
+            border-radius: 60px;
             cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: bold;
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            font-weight: 600;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+            z-index: 2;
+            min-width: 180px;
         }
         
         .yes-btn {
-            background-color: #ff3385;
+            background: linear-gradient(to right, #ff4d94, #ff3385);
             color: white;
-            position: relative;
+            border: 2px solid #ff80b3;
         }
         
         .yes-btn:hover {
-            background-color: #e60073;
-            transform: scale(1.05);
-            box-shadow: 0 10px 20px rgba(255, 0, 102, 0.3);
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 0 15px 30px rgba(255, 51, 133, 0.3);
+            background: linear-gradient(to right, #ff3385, #ff0066);
         }
         
         .no-btn {
-            background-color: #660033;
-            color: white;
+            background: linear-gradient(to right, #cccccc, #b3b3b3);
+            color: #666666;
+            border: 2px solid #d9d9d9;
             position: relative;
             transition: all 0.2s ease;
+        }
+        
+        /* No button will move away when mouse approaches */
+        .no-btn:hover {
+            transform: translate(calc(100vw * var(--random-x)), calc(100vh * var(--random-y)));
+            opacity: 0.9;
         }
         
         .emoji-container {
@@ -137,593 +163,723 @@
         .emoji {
             position: absolute;
             font-size: 2rem;
-            opacity: 0;
             z-index: 5;
+            opacity: 0;
         }
         
-        .falling-emoji {
-            animation: fall linear forwards;
+        .heart {
+            animation: floatHearts 8s linear infinite;
         }
         
-        @keyframes fall {
-            to {
-                transform: translateY(100vh) rotate(360deg);
-                opacity: 0;
-            }
+        .flower {
+            animation: floatFlowers 12s linear infinite;
         }
         
-        .heart-burst {
-            animation: heartBurst 1.5s ease-out forwards;
-            font-size: 3rem;
-        }
-        
-        @keyframes heartBurst {
+        @keyframes floatHearts {
             0% {
-                transform: scale(0);
-                opacity: 0;
-            }
-            50% {
-                transform: scale(1.5);
-                opacity: 1;
-            }
-            100% {
-                transform: scale(1);
-                opacity: 1;
-            }
-        }
-        
-        .balloon {
-            position: absolute;
-            width: 60px;
-            height: 80px;
-            border-radius: 50%;
-            animation: floatUp 6s ease-in forwards;
-            z-index: 4;
-        }
-        
-        @keyframes floatUp {
-            0% {
-                transform: translateY(100vh) scale(0.5);
+                transform: translateY(100vh) rotate(0deg);
                 opacity: 0;
             }
             10% {
                 opacity: 1;
             }
+            90% {
+                opacity: 1;
+            }
             100% {
-                transform: translateY(-100px) scale(1);
+                transform: translateY(-100px) rotate(360deg);
                 opacity: 0;
             }
         }
         
-        .balloon-string {
+        @keyframes floatFlowers {
+            0% {
+                transform: translateY(100vh) rotate(0deg) scale(0.5);
+                opacity: 0;
+            }
+            15% {
+                opacity: 1;
+                transform: translateY(80vh) rotate(120deg) scale(1);
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(720deg) scale(0.8);
+                opacity: 0;
+            }
+        }
+        
+        .balloon {
+            position: absolute;
+            width: 70px;
+            height: 90px;
+            border-radius: 50%;
+            animation: balloonFloat 15s linear infinite;
+            z-index: 4;
+            opacity: 0;
+        }
+        
+        .balloon::after {
+            content: '';
             position: absolute;
             width: 2px;
-            height: 40px;
+            height: 60px;
             background-color: rgba(255, 255, 255, 0.7);
-            top: 80px;
-            left: 29px;
+            top: 90px;
+            left: 34px;
         }
         
-        .message {
-            font-size: 1.4rem;
-            line-height: 1.6;
-            margin-bottom: 25px;
-            color: #660033;
-            padding: 0 10px;
-            min-height: 100px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        @keyframes balloonFloat {
+            0% {
+                transform: translateY(100vh) scale(0.3);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.8;
+            }
+            50% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-200px) scale(1);
+                opacity: 0;
+            }
         }
         
-        .destination-card {
-            background-color: #fff0f7;
-            border-radius: 15px;
-            padding: 20px;
-            margin-bottom: 20px;
-            border-left: 6px solid #ff66b2;
-            text-align: left;
-            box-shadow: 0 5px 15px rgba(255, 102, 178, 0.1);
-            animation: fadeIn 1s ease-out;
+        .balloon-burst {
+            animation: burst 0.5s ease-out forwards;
+            opacity: 1;
         }
         
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        @keyframes burst {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(3);
+                opacity: 0;
+            }
         }
         
-        .destination-title {
-            font-size: 1.5rem;
-            color: #ff3385;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .destination-description {
-            font-size: 1.1rem;
-            color: #8a0a3a;
-            line-height: 1.5;
-        }
-        
-        .progress {
+        .progress-container {
             display: flex;
             justify-content: center;
-            margin: 30px 0;
-            gap: 10px;
+            margin-top: 60px;
+            gap: 15px;
         }
         
         .progress-dot {
-            width: 12px;
-            height: 12px;
+            width: 14px;
+            height: 14px;
             border-radius: 50%;
-            background-color: #ffb3d9;
-            transition: all 0.3s ease;
+            background-color: #ffccdd;
+            transition: all 0.5s ease;
         }
         
         .progress-dot.active {
             background-color: #ff3385;
-            transform: scale(1.3);
+            transform: scale(1.4);
+            box-shadow: 0 0 10px #ff80b3;
         }
         
-        .final-message {
-            font-size: 3.5rem;
-            color: #ff0066;
-            text-shadow: 3px 3px 0 #ffccdd;
-            margin: 40px 0;
-            animation: pulse 2s infinite;
-            font-weight: bold;
-            padding: 20px;
-            background-color: rgba(255, 255, 255, 0.8);
-            border-radius: 20px;
-            border: 5px dashed #ff66b2;
-        }
-        
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-        
-        .hidden {
-            display: none;
-        }
-        
-        footer {
-            margin-top: 40px;
-            padding: 20px;
-            color: #ff66b2;
-            font-size: 1rem;
-        }
-        
-        .funny-message {
+        .final-celebration {
             position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 230, 240, 0.95);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1.5s ease;
+        }
+        
+        .final-celebration.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+        
+        .love-message {
+            font-size: 4.5rem;
+            color: #ff0066;
+            text-align: center;
+            font-weight: 700;
+            margin-bottom: 30px;
+            text-shadow: 3px 3px 0 #ffccdd;
+            animation: pulseLove 2s infinite;
+            line-height: 1.2;
+            padding: 0 20px;
+        }
+        
+        @keyframes pulseLove {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        
+        .sub-message {
+            font-size: 1.8rem;
+            color: #99004d;
+            text-align: center;
+            margin-bottom: 50px;
+            font-weight: 300;
+            max-width: 600px;
+            line-height: 1.5;
+        }
+        
+        .flirt-message {
+            position: absolute;
+            background-color: white;
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            z-index: 200;
+            text-align: center;
+            border: 3px solid #ff80b3;
+            max-width: 400px;
+            animation: popIn 0.5s ease-out;
+            display: none;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            background-color: white;
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-            z-index: 100;
-            text-align: center;
-            border: 5px solid #ff66b2;
-            max-width: 400px;
-            animation: popIn 0.5s ease-out;
         }
         
         @keyframes popIn {
-            0% { transform: translate(-50%, -50%) scale(0.5); opacity: 0; }
-            100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+            0% {
+                transform: translate(-50%, -50%) scale(0.7);
+                opacity: 0;
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 1;
+            }
         }
         
-        .close-funny {
+        .close-flirt {
             margin-top: 20px;
-            padding: 10px 20px;
-            background-color: #ff3385;
+            padding: 12px 30px;
+            background: linear-gradient(to right, #ff4d94, #ff3385);
             color: white;
             border: none;
             border-radius: 50px;
             cursor: pointer;
-            font-weight: bold;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        .background-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+        
+        .bg-heart {
+            position: absolute;
+            color: rgba(255, 102, 178, 0.07);
+            font-size: 8rem;
+        }
+        
+        .jaipur-element {
+            position: absolute;
+            font-size: 5rem;
+            opacity: 0.05;
+            color: #99004d;
+        }
+        
+        .hawa-mahal {
+            top: 10%;
+            right: 5%;
+        }
+        
+        .amber-fort {
+            bottom: 20%;
+            left: 5%;
+        }
+        
+        .johri-bazaar {
+            top: 40%;
+            left: 10%;
         }
         
         @media (max-width: 768px) {
-            h1 { font-size: 2.2rem; }
-            h2 { font-size: 1.5rem; }
-            .question { font-size: 1.5rem; }
-            .btn { padding: 12px 30px; font-size: 1.3rem; }
-            .final-message { font-size: 2.5rem; }
+            .conversation-wrapper {
+                padding: 25px;
+            }
+            
+            .question {
+                font-size: 1.8rem;
+                padding: 0 10px;
+            }
+            
+            .question::before, .question::after {
+                font-size: 3rem;
+            }
+            
+            .question::before {
+                left: -5px;
+                top: -25px;
+            }
+            
+            .options {
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
+            
+            .option-btn {
+                width: 80%;
+                max-width: 300px;
+                padding: 16px 30px;
+            }
+            
+            .love-message {
+                font-size: 3rem;
+            }
+            
+            .sub-message {
+                font-size: 1.4rem;
+                padding: 0 20px;
+            }
         }
         
-        /* Background decorative elements */
-        .bg-heart {
-            position: fixed;
-            color: rgba(255, 102, 178, 0.1);
-            font-size: 10rem;
-            z-index: 1;
+        .romantic-note {
+            font-size: 1.1rem;
+            color: #ff66a3;
+            font-style: italic;
+            margin-top: 20px;
+            opacity: 0.8;
         }
-        
-        .heart1 { top: 10%; left: 5%; }
-        .heart2 { top: 60%; right: 10%; }
-        .heart3 { bottom: 20%; left: 15%; }
     </style>
 </head>
 <body>
-    <!-- Background decorative hearts -->
-    <div class="bg-heart heart1">❤</div>
-    <div class="bg-heart heart2">❤</div>
-    <div class="bg-heart heart3">❤</div>
+    <!-- Background elements -->
+    <div class="background-elements">
+        <div class="bg-heart" style="top: 5%; left: 8%;">❤</div>
+        <div class="bg-heart" style="top: 60%; right: 12%;">❤</div>
+        <div class="bg-heart" style="bottom: 15%; left: 15%;">❤</div>
+        
+        <!-- Jaipur elements -->
+        <div class="jaipur-element hawa-mahal">🕌</div>
+        <div class="jaipur-element amber-fort">🏰</div>
+        <div class="jaipur-element johri-bazaar">💎</div>
+    </div>
     
-    <!-- Emoji container for animated effects -->
+    <!-- Emoji container for continuous animations -->
     <div class="emoji-container" id="emojiContainer"></div>
     
-    <!-- Main content container -->
+    <!-- Flirt message popup -->
+    <div class="flirt-message" id="flirtMessage">
+        <h3>Wait! Let's think about this... ✨</h3>
+        <p>Just like the winds of Hawa Mahal that never stop, my feelings for you are constant and beautiful.</p>
+        <p>Would you reconsider? 😊</p>
+        <button class="close-flirt" id="closeFlirt">Okay, Let's Continue 💖</button>
+    </div>
+    
+    <!-- Main content -->
     <div class="container">
-        <header>
-            <h1>Naveen & Manisha</h1>
-            <div class="subtitle">3 Years of Friendship • Now in Jaipur Together</div>
-            <div class="subtitle">Date: 4th February 2026</div>
-        </header>
-        
-        <div class="story-box">
-            <div id="question" class="question">Manisha, will you be my Valentine this year?</div>
-            <div id="message" class="message">We've known each other for 3 amazing years, and now we're both in Jaipur to study. Let's make this Valentine's Day special!</div>
+        <div class="conversation-wrapper">
+            <div class="question-box" id="questionBox">
+                <div class="question-number" id="questionNumber">Question 1 of 7</div>
+                <div class="question" id="questionText">If Jaipur's Hawa Mahal had a thousand windows, would you let me be the breeze that whispers through every one to reach you?</div>
+                
+                <div class="romantic-note" id="romanticNote">Just like the gentle winds of the Palace of Winds...</div>
+                
+                <div class="options">
+                    <button class="option-btn yes-btn" id="yesBtn">Yes 💖</button>
+                    <button class="option-btn no-btn" id="noBtn">No</button>
+                </div>
+            </div>
             
-            <div class="progress">
+            <div class="progress-container">
                 <div class="progress-dot active" id="dot1"></div>
                 <div class="progress-dot" id="dot2"></div>
                 <div class="progress-dot" id="dot3"></div>
                 <div class="progress-dot" id="dot4"></div>
                 <div class="progress-dot" id="dot5"></div>
-            </div>
-            
-            <div class="buttons" id="buttons">
-                <button class="btn yes-btn" id="yesBtn">Yes! 💖</button>
-                <button class="btn no-btn" id="noBtn">No 😠</button>
+                <div class="progress-dot" id="dot6"></div>
+                <div class="progress-dot" id="dot7"></div>
             </div>
         </div>
-        
-        <!-- Destination cards (hidden initially) -->
-        <div id="destinationCards" class="hidden">
-            <div class="destination-card">
-                <div class="destination-title"><i class="fas fa-monument"></i> Hawa Mahal</div>
-                <div class="destination-description">Let's feel the breeze of love at the Palace of Winds, where every window tells a story of royal romance and whispered secrets.</div>
-            </div>
-            
-            <div class="destination-card">
-                <div class="destination-title"><i class="fas fa-fort-awesome"></i> Amber Fort</div>
-                <div class="destination-description">We'll explore this majestic fort together, imagining ourselves as royalty, with the majestic Aravalli hills as our witness.</div>
-            </div>
-            
-            <div class="destination-card">
-                <div class="destination-title"><i class="fas fa-shopping-bag"></i> Johari Bazaar</div>
-                <div class="destination-description">Let's get lost in the colorful lanes, where the sparkle of precious gems matches the sparkle in your eyes.</div>
-            </div>
-            
-            <div class="destination-card">
-                <div class="destination-title"><i class="fas fa-utensils"></i> Chokhi Dhani</div>
-                <div class="destination-description">We'll experience Rajasthani culture together, with folk dances, camel rides, and delicious food under the stars.</div>
-            </div>
-            
-            <div class="buttons">
-                <button class="btn yes-btn" id="continueBtn">Continue Our Journey 💕</button>
-            </div>
-        </div>
-        
-        <!-- Final message (hidden initially) -->
-        <div id="finalMessage" class="hidden">
-            <div class="final-message">I Love You, Manisha! 💖</div>
-            <div class="message">Thank you for saying YES to this beautiful journey! From our 3 years of friendship to exploring Jaipur together, every moment with you is special. Let's create many more memories together! ❤️</div>
-        </div>
-        
-        <footer>
-            Made with 💖 for Manisha by Naveen | Jaipur Valentine's Day 2026
-        </footer>
     </div>
     
-    <!-- Funny message popup -->
-    <div id="funnyMessage" class="funny-message hidden">
-        <h2>Oops! Wrong Choice! 😜</h2>
-        <p>You can't say NO to Naveen! The universe wants you to click YES! 🌟</p>
-        <p><em>Try clicking YES, you know you want to! 😉</em></p>
-        <button class="close-funny" id="closeFunny">OK, I'll click YES! 💖</button>
+    <!-- Final celebration -->
+    <div class="final-celebration" id="finalCelebration">
+        <div class="love-message" id="loveMessage">I love you too, Manisha! 💕</div>
+        <div class="sub-message">Every moment with you feels like a beautiful verse in the poetry of my life. From our first meeting to exploring Jaipur together, you've made every day special.</div>
     </div>
 
     <script>
-        // Current step tracker
-        let currentStep = 1;
-        const totalSteps = 5;
-        let noClickCount = 0;
+        // Questions with romantic Jaipur-themed flirtations
+        const questions = [
+            {
+                text: "If Jaipur's Hawa Mahal had a thousand windows, would you let me be the breeze that whispers through every one to reach you?",
+                note: "Just like the gentle winds of the Palace of Winds..."
+            },
+            {
+                text: "At Amber Fort, as the sun sets painting the sky in hues of love, would you watch this beautiful transition with me, hand in hand?",
+                note: "Amber Fort has seen many sunsets, but none as special as with you..."
+            },
+            {
+                text: "In Johari Bazaar, amongst all the precious gems, if my eyes always find you, does that mean you're the most valuable jewel here?",
+                note: "Even the rarest diamonds pale in comparison to your smile..."
+            },
+            {
+                text: "If the Nahargarh Fort stands strong watching over Jaipur, can I be the one who stands strong for you, protecting every dream of yours?",
+                note: "Just like the fort on the hills, my feelings stand tall and unwavering..."
+            },
+            {
+                text: "When we walk through the City Palace, and history whispers tales of romance, would you write our own love story with me here?",
+                note: "Every corridor here echoes with love stories; let's add ours to them..."
+            },
+            {
+                text: "If every step in Jantar Mantar measures time, can we measure our moments not in hours but in heartbeats when we're together?",
+                note: "Time stands still when I'm with you..."
+            },
+            {
+                text: "Manisha, after all these beautiful moments and conversations, do you feel what I feel? Do you love me?",
+                note: "This is the most important question of all..."
+            }
+        ];
         
         // DOM elements
-        const questionElement = document.getElementById('question');
-        const messageElement = document.getElementById('message');
+        const questionBox = document.getElementById('questionBox');
+        const questionNumber = document.getElementById('questionNumber');
+        const questionText = document.getElementById('questionText');
+        const romanticNote = document.getElementById('romanticNote');
         const yesBtn = document.getElementById('yesBtn');
         const noBtn = document.getElementById('noBtn');
-        const buttonsElement = document.getElementById('buttons');
         const emojiContainer = document.getElementById('emojiContainer');
-        const destinationCards = document.getElementById('destinationCards');
-        const finalMessage = document.getElementById('finalMessage');
-        const funnyMessage = document.getElementById('funnyMessage');
-        const closeFunnyBtn = document.getElementById('closeFunny');
-        const continueBtn = document.getElementById('continueBtn');
+        const finalCelebration = document.getElementById('finalCelebration');
+        const loveMessage = document.getElementById('loveMessage');
+        const flirtMessage = document.getElementById('flirtMessage');
+        const closeFlirt = document.getElementById('closeFlirt');
+        
+        // Progress dots
         const progressDots = [
             document.getElementById('dot1'),
             document.getElementById('dot2'),
             document.getElementById('dot3'),
             document.getElementById('dot4'),
-            document.getElementById('dot5')
+            document.getElementById('dot5'),
+            document.getElementById('dot6'),
+            document.getElementById('dot7')
         ];
         
-        // Questions and messages for each step
-        const steps = [
-            {
-                question: "Manisha, will you be my Valentine this year?",
-                message: "We've known each other for 3 amazing years, and now we're both in Jaipur to study. Let's make this Valentine's Day special!"
-            },
-            {
-                question: "Shall we start our romantic journey through Jaipur?",
-                message: "Jaipur, the Pink City, is waiting for us to explore its beauty together!"
-            },
-            {
-                question: "Will you explore the historical wonders of Jaipur with me?",
-                message: "From magnificent forts to beautiful palaces, every corner has a story to tell."
-            },
-            {
-                question: "Can we experience the vibrant culture of Rajasthan together?",
-                message: "Let's enjoy folk music, delicious food, and colorful markets hand in hand."
-            },
-            {
-                question: "Manisha, will you make unforgettable memories with me in Jaipur?",
-                message: "This is just the beginning of our beautiful journey together!"
-            }
-        ];
+        // State variables
+        let currentQuestion = 0;
+        let noAttempts = 0;
+        let isFinalQuestion = false;
         
-        // Initialize
-        updateProgressDots();
+        // Initialize continuous animations
+        startContinuousAnimations();
         
-        // Yes button click handler
-        yesBtn.addEventListener('click', function() {
-            // Create falling flower emojis
-            createFallingEmojis('🌸', 30);
-            createFallingEmojis('🌹', 20);
-            createFallingEmojis('💐', 15);
+        // Update the question display
+        function updateQuestion() {
+            questionNumber.textContent = `Question ${currentQuestion + 1} of ${questions.length}`;
+            questionText.textContent = questions[currentQuestion].text;
+            romanticNote.textContent = questions[currentQuestion].note;
             
-            // Move to next step
-            currentStep++;
-            
-            if (currentStep <= totalSteps) {
-                // Update question and message
-                questionElement.textContent = steps[currentStep-1].question;
-                messageElement.textContent = steps[currentStep-1].message;
-                
-                // Update progress dots
-                updateProgressDots();
-                
-                // If it's the last step, show destinations
-                if (currentStep === totalSteps) {
-                    // Show destination cards after a delay
-                    setTimeout(() => {
-                        buttonsElement.classList.add('hidden');
-                        destinationCards.classList.remove('hidden');
-                    }, 1500);
-                }
-            }
-        });
-        
-        // No button click handler
-        noBtn.addEventListener('click', function() {
-            noClickCount++;
-            
-            // Move the No button randomly
-            const randomX = Math.random() * 300 - 150;
-            const randomY = Math.random() * 200 - 100;
-            noBtn.style.transform = `translate(${randomX}px, ${randomY}px)`;
-            
-            // Create angry emojis
-            createAngryEmojis();
-            
-            // Show funny message after a few clicks
-            if (noClickCount >= 2) {
-                setTimeout(() => {
-                    funnyMessage.classList.remove('hidden');
-                }, 500);
-            }
-        });
-        
-        // Close funny message
-        closeFunnyBtn.addEventListener('click', function() {
-            funnyMessage.classList.add('hidden');
-            // Move No button back to original position
-            noBtn.style.transform = 'translate(0, 0)';
-        });
-        
-        // Continue button (after destinations)
-        continueBtn.addEventListener('click', function() {
-            // Create celebration effect
-            createCelebration();
-            
-            // Hide destination cards and show final message
-            destinationCards.classList.add('hidden');
-            finalMessage.classList.remove('hidden');
-        });
-        
-        // Function to create falling emojis
-        function createFallingEmojis(emoji, count) {
-            for (let i = 0; i < count; i++) {
-                const emojiElement = document.createElement('div');
-                emojiElement.classList.add('emoji', 'falling-emoji');
-                emojiElement.textContent = emoji;
-                emojiElement.style.left = `${Math.random() * 100}vw`;
-                emojiElement.style.fontSize = `${Math.random() * 2 + 1.5}rem`;
-                emojiElement.style.animationDuration = `${Math.random() * 3 + 2}s`;
-                emojiElement.style.opacity = `${Math.random() * 0.5 + 0.5}`;
-                
-                emojiContainer.appendChild(emojiElement);
-                
-                // Remove emoji after animation completes
-                setTimeout(() => {
-                    emojiElement.remove();
-                }, 5000);
-            }
-        }
-        
-        // Function to create angry emojis
-        function createAngryEmojis() {
-            const angryEmojis = ['😠', '😡', '🤬', '👿', '💢'];
-            
-            for (let i = 0; i < 25; i++) {
-                const emojiElement = document.createElement('div');
-                emojiElement.classList.add('emoji');
-                emojiElement.textContent = angryEmojis[Math.floor(Math.random() * angryEmojis.length)];
-                emojiElement.style.left = `${Math.random() * 100}vw`;
-                emojiElement.style.top = `${Math.random() * 100}vh`;
-                emojiElement.style.fontSize = `${Math.random() * 3 + 2}rem`;
-                emojiElement.style.opacity = '1';
-                
-                emojiContainer.appendChild(emojiElement);
-                
-                // Remove emoji after a while
-                setTimeout(() => {
-                    emojiElement.style.transition = 'opacity 1s';
-                    emojiElement.style.opacity = '0';
-                    setTimeout(() => {
-                        emojiElement.remove();
-                    }, 1000);
-                }, 1000);
-            }
-        }
-        
-        // Function to create celebration effect
-        function createCelebration() {
-            // Create heart burst
-            for (let i = 0; i < 50; i++) {
-                const heart = document.createElement('div');
-                heart.classList.add('emoji', 'heart-burst');
-                heart.textContent = '❤️';
-                heart.style.left = `${Math.random() * 100}vw`;
-                heart.style.top = `${Math.random() * 100}vh`;
-                heart.style.fontSize = `${Math.random() * 4 + 2}rem`;
-                heart.style.animationDelay = `${Math.random() * 1}s`;
-                
-                emojiContainer.appendChild(heart);
-                
-                // Remove heart after animation
-                setTimeout(() => {
-                    heart.remove();
-                }, 2000);
-            }
-            
-            // Create flower emojis
-            const flowers = ['🌸', '🌹', '🌺', '🌻', '🌼', '💐', '🥀'];
-            for (let i = 0; i < 40; i++) {
-                setTimeout(() => {
-                    const flower = document.createElement('div');
-                    flower.classList.add('emoji');
-                    flower.textContent = flowers[Math.floor(Math.random() * flowers.length)];
-                    flower.style.left = `${Math.random() * 100}vw`;
-                    flower.style.top = `${Math.random() * 100}vh`;
-                    flower.style.fontSize = `${Math.random() * 3 + 2}rem`;
-                    flower.style.opacity = '1';
-                    
-                    emojiContainer.appendChild(flower);
-                    
-                    // Animate flower
-                    flower.animate([
-                        { transform: 'scale(0) rotate(0deg)', opacity: 0 },
-                        { transform: 'scale(1.5) rotate(180deg)', opacity: 1 },
-                        { transform: 'scale(1) rotate(360deg)', opacity: 0.8 }
-                    ], {
-                        duration: 2000,
-                        easing: 'ease-out'
-                    });
-                    
-                    // Remove flower after animation
-                    setTimeout(() => {
-                        flower.remove();
-                    }, 2000);
-                }, i * 100);
-            }
-            
-            // Create balloons
-            const balloonColors = ['#ff3385', '#ff66b2', '#ff0066', '#ff99cc', '#ff4d94'];
-            for (let i = 0; i < 20; i++) {
-                setTimeout(() => {
-                    const balloon = document.createElement('div');
-                    balloon.classList.add('balloon');
-                    balloon.style.left = `${Math.random() * 100}vw`;
-                    balloon.style.backgroundColor = balloonColors[Math.floor(Math.random() * balloonColors.length)];
-                    
-                    // Add balloon string
-                    const string = document.createElement('div');
-                    string.classList.add('balloon-string');
-                    
-                    balloon.appendChild(string);
-                    emojiContainer.appendChild(balloon);
-                    
-                    // Remove balloon after animation
-                    setTimeout(() => {
-                        balloon.remove();
-                    }, 6000);
-                }, i * 300);
-            }
-            
-            // Add "I Love Manisha" text effect
-            setTimeout(() => {
-                const loveText = document.createElement('div');
-                loveText.textContent = "I LOVE MANISHA";
-                loveText.style.position = 'fixed';
-                loveText.style.top = '50%';
-                loveText.style.left = '50%';
-                loveText.style.transform = 'translate(-50%, -50%)';
-                loveText.style.fontSize = '4rem';
-                loveText.style.color = '#ff0066';
-                loveText.style.fontWeight = 'bold';
-                loveText.style.textShadow = '3px 3px 0 #ffccdd';
-                loveText.style.zIndex = '100';
-                loveText.style.opacity = '0';
-                loveText.style.textAlign = 'center';
-                
-                document.body.appendChild(loveText);
-                
-                // Animate the text
-                loveText.animate([
-                    { opacity: 0, transform: 'translate(-50%, -50%) scale(0.5)' },
-                    { opacity: 1, transform: 'translate(-50%, -50%) scale(1.2)' },
-                    { opacity: 1, transform: 'translate(-50%, -50%) scale(1)' }
-                ], {
-                    duration: 2000,
-                    easing: 'ease-out'
-                });
-                
-                loveText.style.opacity = '1';
-                
-                // Keep the text visible
-                setTimeout(() => {
-                    loveText.style.transition = 'opacity 3s';
-                    loveText.style.opacity = '0.7';
-                }, 2000);
-            }, 1000);
-        }
-        
-        // Function to update progress dots
-        function updateProgressDots() {
+            // Update progress dots
             progressDots.forEach((dot, index) => {
-                if (index < currentStep) {
+                if (index <= currentQuestion) {
                     dot.classList.add('active');
                 } else {
                     dot.classList.remove('active');
                 }
             });
+            
+            // Check if this is the final question
+            isFinalQuestion = (currentQuestion === questions.length - 1);
         }
         
-        // Create some initial background emojis
-        window.onload = function() {
-            createFallingEmojis('🌸', 10);
-            createFallingEmojis('💖', 5);
-        };
+        // Start continuous background animations
+        function startContinuousAnimations() {
+            // Create continuous hearts
+            setInterval(() => {
+                createFloatingEmoji('❤️', 'heart', 1.5, 8);
+            }, 800);
+            
+            // Create continuous flowers
+            setInterval(() => {
+                const flowers = ['🌸', '🌹', '🌺', '🌻', '💐'];
+                const randomFlower = flowers[Math.floor(Math.random() * flowers.length)];
+                createFloatingEmoji(randomFlower, 'flower', 2, 12);
+            }, 1200);
+            
+            // Create continuous balloons
+            setInterval(() => {
+                createBalloon();
+            }, 2000);
+            
+            // Burst random balloons
+            setInterval(() => {
+                burstRandomBalloon();
+            }, 1500);
+        }
+        
+        // Create a floating emoji
+        function createFloatingEmoji(emoji, type, sizeMultiplier, duration) {
+            const emojiElement = document.createElement('div');
+            emojiElement.classList.add('emoji', type);
+            emojiElement.textContent = emoji;
+            emojiElement.style.left = `${Math.random() * 100}vw`;
+            emojiElement.style.fontSize = `${Math.random() * sizeMultiplier + 1.5}rem`;
+            emojiElement.style.animationDuration = `${duration + Math.random() * 5}s`;
+            
+            emojiContainer.appendChild(emojiElement);
+            
+            // Remove emoji after animation
+            setTimeout(() => {
+                if (emojiElement.parentNode) {
+                    emojiElement.remove();
+                }
+            }, (duration + 5) * 1000);
+        }
+        
+        // Create a balloon
+        function createBalloon() {
+            const balloon = document.createElement('div');
+            balloon.classList.add('balloon');
+            
+            // Random balloon color
+            const colors = ['#ff3385', '#ff66b2', '#ff0066', '#ff4d94', '#ff80b3'];
+            balloon.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            
+            // Random position and animation delay
+            balloon.style.left = `${Math.random() * 100}vw`;
+            balloon.style.animationDelay = `${Math.random() * 5}s`;
+            
+            emojiContainer.appendChild(balloon);
+            
+            // Remove balloon after animation
+            setTimeout(() => {
+                if (balloon.parentNode) {
+                    balloon.remove();
+                }
+            }, 16000);
+        }
+        
+        // Burst a random balloon
+        function burstRandomBalloon() {
+            const balloons = document.querySelectorAll('.balloon');
+            if (balloons.length > 0) {
+                const randomBalloon = balloons[Math.floor(Math.random() * balloons.length)];
+                randomBalloon.classList.add('balloon-burst');
+                
+                setTimeout(() => {
+                    if (randomBalloon.parentNode) {
+                        randomBalloon.remove();
+                    }
+                }, 500);
+            }
+        }
+        
+        // Handle "Yes" button click
+        yesBtn.addEventListener('click', function() {
+            // Create extra celebration for "Yes"
+            createYesCelebration();
+            
+            // Move to next question or show final celebration
+            if (currentQuestion < questions.length - 1) {
+                currentQuestion++;
+                updateQuestion();
+                
+                // If it's the final question, change button text
+                if (isFinalQuestion) {
+                    yesBtn.textContent = "Yes, I Love You! 💖";
+                }
+            } else {
+                // Final question answered with "Yes"
+                showFinalCelebration();
+            }
+        });
+        
+        // Handle "No" button mouseover - make it move away
+        noBtn.addEventListener('mouseover', function() {
+            noAttempts++;
+            
+            // Set random position for the No button to move to
+            const randomX = Math.random() * 0.8 - 0.4; // Between -0.4 and 0.4
+            const randomY = Math.random() * 0.8 - 0.4; // Between -0.4 and 0.4
+            
+            // Apply CSS custom property for the random movement
+            noBtn.style.setProperty('--random-x', randomX);
+            noBtn.style.setProperty('--random-y', randomY);
+            
+            // Show flirt message after a few attempts
+            if (noAttempts >= 2 && !isFinalQuestion) {
+                setTimeout(() => {
+                    flirtMessage.style.display = 'block';
+                }, 300);
+            }
+            
+            // On final question, show special message
+            if (isFinalQuestion && noAttempts >= 1) {
+                setTimeout(() => {
+                    flirtMessage.innerHTML = `
+                        <h3>Wait, before you say no... 🌹</h3>
+                        <p>Every moment with you has been special. Every conversation, every laugh, every shared glance in Jaipur's beautiful places.</p>
+                        <p>Are you sure about your answer? ❤️</p>
+                        <button class="close-flirt" id="closeFlirt">Let Me Think Again</button>
+                    `;
+                    flirtMessage.style.display = 'block';
+                    
+                    // Update the close button event listener
+                    document.getElementById('closeFlirt').addEventListener('click', function() {
+                        flirtMessage.style.display = 'none';
+                    });
+                }, 400);
+            }
+        });
+        
+        // Close flirt message
+        closeFlirt.addEventListener('click', function() {
+            flirtMessage.style.display = 'none';
+        });
+        
+        // Handle "No" button click (though it's hard to click)
+        noBtn.addEventListener('click', function() {
+            // On final question, make it extra hard
+            if (isFinalQuestion) {
+                // Move button far away
+                const moveX = Math.random() > 0.5 ? 100 : -100;
+                const moveY = Math.random() > 0.5 ? 100 : -100;
+                
+                noBtn.style.transform = `translate(${moveX}vw, ${moveY}vh)`;
+                noBtn.style.opacity = '0.5';
+                
+                // Show special message
+                setTimeout(() => {
+                    flirtMessage.innerHTML = `
+                        <h3>The heart knows what it wants 💓</h3>
+                        <p>Sometimes we resist what feels right because it's powerful. But true feelings have a way of finding their path.</p>
+                        <p>Like the pigeons of Jal Mahal returning home, love finds its way.</p>
+                        <button class="close-flirt" id="closeFlirt">You're Right 💖</button>
+                    `;
+                    flirtMessage.style.display = 'block';
+                    
+                    // Update the close button event listener
+                    document.getElementById('closeFlirt').addEventListener('click', function() {
+                        flirtMessage.style.display = 'none';
+                        // Move button back (but it will still run away on hover)
+                        noBtn.style.transform = 'translate(0, 0)';
+                        noBtn.style.opacity = '1';
+                    });
+                }, 500);
+            }
+        });
+        
+        // Create special celebration for "Yes" clicks
+        function createYesCelebration() {
+            // Create burst of hearts
+            for (let i = 0; i < 15; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.classList.add('emoji');
+                    heart.textContent = '❤️';
+                    heart.style.left = `${50 + (Math.random() * 40 - 20)}vw`;
+                    heart.style.top = `${50 + (Math.random() * 40 - 20)}vh`;
+                    heart.style.fontSize = `${Math.random() * 3 + 2}rem`;
+                    heart.style.opacity = '1';
+                    heart.style.zIndex = '20';
+                    heart.style.animation = `heartBurst 1.5s ease-out forwards`;
+                    
+                    emojiContainer.appendChild(heart);
+                    
+                    // Remove after animation
+                    setTimeout(() => {
+                        if (heart.parentNode) {
+                            heart.remove();
+                        }
+                    }, 1500);
+                }, i * 100);
+            }
+            
+            // Add CSS for heart burst animation
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes heartBurst {
+                    0% { transform: scale(0) rotate(0deg); opacity: 0; }
+                    50% { transform: scale(1.5) rotate(180deg); opacity: 1; }
+                    100% { transform: scale(1) rotate(360deg); opacity: 0; }
+                }
+            `;
+            document.head.appendChild(style);
+        }
+        
+        // Show final celebration
+        function showFinalCelebration() {
+            // Hide the question box
+            questionBox.style.opacity = '0';
+            questionBox.style.transition = 'opacity 1s';
+            
+            // Show final celebration
+            setTimeout(() => {
+                finalCelebration.classList.add('active');
+                
+                // Create massive celebration
+                createMassiveCelebration();
+                
+                // Update love message with Manisha's name
+                loveMessage.textContent = "I love you too, Manisha! 💕";
+            }, 1000);
+        }
+        
+        // Create massive celebration for final
+        function createMassiveCelebration() {
+            // Create tons of hearts
+            for (let i = 0; i < 100; i++) {
+                setTimeout(() => {
+                    createFloatingEmoji('❤️', 'heart', 2, 10);
+                }, i * 50);
+            }
+            
+            // Create tons of flowers
+            const flowers = ['🌸', '🌹', '🌺', '🌻', '💐', '🥀'];
+            for (let i = 0; i < 80; i++) {
+                setTimeout(() => {
+                    const randomFlower = flowers[Math.floor(Math.random() * flowers.length)];
+                    createFloatingEmoji(randomFlower, 'flower', 2.5, 15);
+                }, i * 60);
+            }
+            
+            // Create many balloons
+            for (let i = 0; i < 30; i++) {
+                setTimeout(() => {
+                    createBalloon();
+                }, i * 200);
+            }
+            
+            // Burst balloons continuously
+            const burstInterval = setInterval(() => {
+                burstRandomBalloon();
+            }, 300);
+            
+            // Stop bursting after 10 seconds
+            setTimeout(() => {
+                clearInterval(burstInterval);
+            }, 10000);
+        }
+        
+        // Initialize first question
+        updateQuestion();
     </script>
 </body>
 </html>
