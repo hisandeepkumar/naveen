@@ -30,7 +30,7 @@
             width: 100%;
             height: 100%;
             pointer-events: none;
-            z-index: 1;
+            z-index: 3; /* Increased z-index to be on top */
         }
         
         /* Main container */
@@ -39,7 +39,7 @@
             margin: 0 auto;
             padding: 20px;
             position: relative;
-            z-index: 2;
+            z-index: 10; /* Higher than canvas */
         }
         
         /* Header section */
@@ -140,7 +140,7 @@
             max-width: 800px;
             margin: 0 auto 40px;
             position: relative;
-            z-index: 2;
+            z-index: 10;
         }
         
         .message-box h3 {
@@ -233,10 +233,69 @@
             color: #993366;
             font-size: 0.9rem;
             position: relative;
-            z-index: 2;
+            z-index: 10;
+            margin-top: 40px;
         }
         
-        /* Floating hearts animation */
+        /* Developer Section */
+        .developer-section {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 25px;
+            max-width: 800px;
+            margin: 30px auto;
+            box-shadow: 0 10px 30px rgba(204, 0, 102, 0.2);
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .developer-section h4 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
+            color: #cc0066;
+            margin-bottom: 15px;
+        }
+        
+        .developer-section p {
+            color: #660033;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        
+        /* Glass Instagram Button */
+        .instagram-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 12px 30px;
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50px;
+            color: #cc0066;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 32px rgba(204, 0, 102, 0.2);
+            margin-top: 10px;
+        }
+        
+        .instagram-btn:hover {
+            background: rgba(255, 255, 255, 0.4);
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(204, 0, 102, 0.3);
+            color: #990033;
+        }
+        
+        .instagram-btn i {
+            font-size: 1.3rem;
+        }
+        
+        /* Floating hearts animation - now combined with flowers */
         .floating-hearts {
             position: fixed;
             top: 0;
@@ -244,29 +303,29 @@
             width: 100%;
             height: 100%;
             pointer-events: none;
-            z-index: 1;
+            z-index: 2; /* Below the canvas but above background */
         }
         
         .heart {
             position: absolute;
             font-size: 24px;
-            opacity: 0.7;
-            animation: float 6s ease-in infinite;
+            opacity: 0;
+            animation: float 8s ease-in infinite;
         }
         
         @keyframes float {
             0% {
-                transform: translateY(100vh) rotate(0deg);
+                transform: translateY(100vh) rotate(0deg) scale(0.8);
                 opacity: 0;
             }
             10% {
-                opacity: 0.8;
+                opacity: 0.9;
             }
             90% {
-                opacity: 0.8;
+                opacity: 0.9;
             }
             100% {
-                transform: translateY(-100px) rotate(360deg);
+                transform: translateY(-100px) rotate(360deg) scale(1.2);
                 opacity: 0;
             }
         }
@@ -285,17 +344,33 @@
                 gap: 20px;
             }
             
-            .gif-container, .message-container, .message-box {
+            .gif-container, .message-container, .message-box, .developer-section {
                 padding: 20px;
             }
+            
+            .instagram-btn {
+                padding: 10px 20px;
+                font-size: 1rem;
+            }
+        }
+        
+        /* Fun note */
+        .fun-note {
+            margin-top: 20px;
+            font-style: italic;
+            color: #993366;
+            font-size: 0.9rem;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 10px;
         }
     </style>
 </head>
 <body>
-    <!-- Canvas for falling emojis -->
+    <!-- Canvas for falling emojis (flowers and hearts mixed) -->
     <canvas id="emojiCanvas"></canvas>
     
-    <!-- Floating hearts -->
+    <!-- Floating hearts and flowers (continuous background) -->
     <div class="floating-hearts" id="floatingHearts"></div>
     
     <!-- Main container -->
@@ -347,9 +422,25 @@
             <div id="response" class="response"></div>
         </div>
         
+        <!-- Developer Section -->
+        <div class="developer-section">
+            <h4>Made with Love 💖</h4>
+            <p>This beautiful page was created by Sandeep Yadav</p>
+            <p>If you like this page and want to connect with the developer:</p>
+            
+            <a href="https://instagram.com/sandeep_yadav_._._" target="_blank" class="instagram-btn">
+                <i class="fab fa-instagram"></i> Follow on Instagram
+            </a>
+            
+            <div class="fun-note">
+                <p>PS: Agar tum dono ka patch ho jaye to mere liye GF dhund dena! Aur party bhi chahiye commission ke taur pe! 🎉😉</p>
+            </div>
+        </div>
+        
         <!-- Footer -->
         <div class="footer">
             <p>Made with <i class="fas fa-heart" style="color: #cc0066;"></i> for Manisha | Every moment with you is special</p>
+            <p style="margin-top: 10px; font-size: 0.8rem;">Created by Sandeep Yadav | Instagram: @sandeep_yadav_._._</p>
         </div>
     </div>
     
@@ -404,11 +495,12 @@
                 }
                 
                 if (allSuccessful) {
-                    showResponse('Message sent successfully to Manisha! ❤️', true);
+                    // Updated message as requested
+                    showResponse('Message sent to Naveen! ❤️', true);
                     messageInput.value = '';
                     
-                    // Add a visual confirmation with falling hearts
-                    createHeartsConfirmation();
+                    // Add a visual confirmation with falling hearts and flowers
+                    createHeartsFlowersConfirmation();
                 } else {
                     showResponse('Message partially sent. Some recipients may not have received it.', false);
                 }
@@ -434,29 +526,35 @@
             }, 5000);
         }
         
-        // Create hearts confirmation animation
-        function createHeartsConfirmation() {
+        // Create hearts and flowers confirmation animation
+        function createHeartsFlowersConfirmation() {
             const heartsContainer = document.getElementById('floatingHearts');
             
-            for (let i = 0; i < 15; i++) {
-                const heart = document.createElement('div');
-                heart.className = 'heart';
-                heart.innerHTML = '❤️';
-                heart.style.left = `${Math.random() * 100}%`;
-                heart.style.fontSize = `${Math.random() * 20 + 20}px`;
-                heart.style.animationDuration = `${Math.random() * 3 + 3}s`;
-                heart.style.animationDelay = `${Math.random() * 2}s`;
-                
-                heartsContainer.appendChild(heart);
-                
-                // Remove heart after animation completes
+            for (let i = 0; i < 20; i++) {
                 setTimeout(() => {
-                    heart.remove();
-                }, 6000);
+                    const heart = document.createElement('div');
+                    heart.className = 'heart';
+                    // Mix of hearts and flowers
+                    const emojis = ['❤️', '💖', '💕', '🌸', '🌹', '🌺', '🌷', '💐', '🌼'];
+                    heart.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
+                    heart.style.left = `${Math.random() * 100}%`;
+                    heart.style.fontSize = `${Math.random() * 25 + 20}px`;
+                    heart.style.animationDuration = `${Math.random() * 4 + 6}s`;
+                    heart.style.animationDelay = `${Math.random() * 2}s`;
+                    
+                    heartsContainer.appendChild(heart);
+                    
+                    // Remove heart after animation completes
+                    setTimeout(() => {
+                        if (heart.parentNode) {
+                            heart.remove();
+                        }
+                    }, 9000);
+                }, i * 200);
             }
         }
         
-        // Canvas for falling emojis
+        // Canvas for falling emojis (flowers and hearts mixed)
         const canvas = document.getElementById('emojiCanvas');
         const ctx = canvas.getContext('2d');
         
@@ -464,7 +562,7 @@
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
         
-        // Emoji array
+        // Emoji array - mix of hearts and flowers
         const emojis = ['❤️', '💖', '💕', '💗', '💓', '💞', '💝', '🌸', '🌹', '🥀', '🌺', '🌷', '💐', '🌼', '🌻', '🎉', '✨', '🌟', '💫', '🥰', '😍', '😘', '💋'];
         
         // Emoji objects
@@ -482,35 +580,46 @@
                 this.emoji = emojis[Math.floor(Math.random() * emojis.length)];
                 this.x = Math.random() * canvas.width;
                 this.y = -50;
-                this.size = Math.random() * 30 + 20;
+                this.size = Math.random() * 30 + 25; // Slightly larger
                 this.speed = Math.random() * 3 + 2;
-                this.opacity = Math.random() * 0.5 + 0.5;
+                this.opacity = Math.random() * 0.7 + 0.3; // More visible
                 this.wobble = Math.random() * 0.05;
                 this.wobbleSpeed = Math.random() * 0.05 + 0.02;
                 this.wobbleOffset = Math.random() * Math.PI * 2;
+                // Add rotation
+                this.rotation = 0;
+                this.rotationSpeed = Math.random() * 0.05 - 0.025;
             }
             
             update() {
                 this.y += this.speed;
                 this.x += Math.sin(Date.now() * this.wobbleSpeed + this.wobbleOffset) * this.wobble;
+                this.rotation += this.rotationSpeed;
                 
                 if (this.y > canvas.height) {
                     this.reset();
+                    this.y = -50;
                 }
             }
             
             draw() {
+                ctx.save();
+                ctx.translate(this.x, this.y);
+                ctx.rotate(this.rotation);
                 ctx.font = `${this.size}px Arial`;
                 ctx.globalAlpha = this.opacity;
-                ctx.fillText(this.emoji, this.x, this.y);
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText(this.emoji, 0, 0);
                 ctx.globalAlpha = 1;
+                ctx.restore();
             }
         }
         
         // Create initial emojis
         function initEmojis() {
             emojiArray = [];
-            const emojiCount = Math.min(50, Math.floor(window.innerWidth / 20));
+            const emojiCount = Math.min(80, Math.floor(window.innerWidth / 15)); // More emojis
             
             for (let i = 0; i < emojiCount; i++) {
                 emojiArray.push(new FallingEmoji());
@@ -519,7 +628,9 @@
         
         // Animation loop
         function animate() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            // Clear with a slight fade effect for trailing effect
+            ctx.fillStyle = 'rgba(255, 204, 230, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
             
             for (let i = 0; i < emojiArray.length; i++) {
                 emojiArray[i].update();
@@ -540,20 +651,50 @@
         initEmojis();
         animate();
         
-        // Create initial floating hearts
-        for (let i = 0; i < 20; i++) {
-            setTimeout(() => {
-                createHeartsConfirmation();
-            }, i * 300);
-        }
-        
-        // Add some initial floating hearts
-        window.addEventListener('load', () => {
-            for (let i = 0; i < 10; i++) {
+        // Create continuous floating hearts and flowers in background
+        function createContinuousHeartsFlowers() {
+            const heartsContainer = document.getElementById('floatingHearts');
+            
+            // Create more initially
+            for (let i = 0; i < 40; i++) {
                 setTimeout(() => {
-                    createHeartsConfirmation();
+                    createHeartFlower(heartsContainer);
                 }, i * 500);
             }
+            
+            // Keep adding more continuously
+            setInterval(() => {
+                for (let i = 0; i < 3; i++) {
+                    createHeartFlower(heartsContainer);
+                }
+            }, 2000);
+        }
+        
+        // Create a single heart/flower element
+        function createHeartFlower(container) {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            // Mix of hearts and flowers
+            const emojis = ['❤️', '💖', '💕', '🌸', '🌹', '🌺', '🌷', '💐', '🌼', '💗', '💓', '💞'];
+            heart.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
+            heart.style.left = `${Math.random() * 100}%`;
+            heart.style.fontSize = `${Math.random() * 30 + 20}px`;
+            heart.style.animationDuration = `${Math.random() * 6 + 8}s`; // Longer duration
+            heart.style.animationDelay = `${Math.random() * 2}s`;
+            
+            container.appendChild(heart);
+            
+            // Remove heart after animation completes
+            setTimeout(() => {
+                if (heart.parentNode) {
+                    heart.remove();
+                }
+            }, 10000);
+        }
+        
+        // Start continuous animation
+        window.addEventListener('load', () => {
+            createContinuousHeartsFlowers();
         });
         
         // Add enter key support for sending message
@@ -562,6 +703,18 @@
                 sendBtn.click();
             }
         });
+        
+        // Instagram button interaction effect
+        const instagramBtn = document.querySelector('.instagram-btn');
+        if (instagramBtn) {
+            instagramBtn.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px) scale(1.05)';
+            });
+            
+            instagramBtn.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        }
     </script>
 </body>
 </html>
