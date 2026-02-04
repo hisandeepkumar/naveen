@@ -1,0 +1,1136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Manisha ❤️</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #ffcce6 0%, #ff99cc 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            color: #660033;
+            position: relative;
+        }
+        
+        /* Canvas for falling emojis */
+        #emojiCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 3;
+        }
+        
+        /* Canvas for fireworks */
+        #fireworksCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 4;
+        }
+        
+        /* Main container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 10;
+        }
+        
+        /* Header section */
+        .header {
+            text-align: center;
+            padding: 20px 0;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4rem;
+            color: #cc0066;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            color: #993366;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        
+        /* Content area with GIF and message */
+        .content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        
+        .gif-container {
+            flex: 1;
+            min-width: 300px;
+            max-width: 500px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(204, 0, 102, 0.2);
+            background: white;
+            padding: 15px;
+        }
+        
+        .gif-container iframe {
+            width: 100%;
+            height: 400px;
+            border-radius: 15px;
+            border: none;
+        }
+        
+        .message-container {
+            flex: 1;
+            min-width: 300px;
+            max-width: 600px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(204, 0, 102, 0.2);
+            backdrop-filter: blur(5px);
+        }
+        
+        .message-container h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.8rem;
+            color: #cc0066;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .message-text {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            color: #660033;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .heart-beat {
+            display: inline-block;
+            animation: heartbeat 1.5s infinite;
+            color: #ff0066;
+        }
+        
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        /* Message sending section */
+        .message-box {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(204, 0, 102, 0.2);
+            max-width: 800px;
+            margin: 0 auto 40px;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .message-box h3 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            color: #cc0066;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        textarea {
+            width: 100%;
+            height: 150px;
+            padding: 15px;
+            border: 2px solid #ff99cc;
+            border-radius: 15px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            resize: vertical;
+            background: rgba(255, 255, 255, 0.9);
+            color: #660033;
+            transition: all 0.3s;
+        }
+        
+        textarea:focus {
+            outline: none;
+            border-color: #cc0066;
+            box-shadow: 0 0 10px rgba(204, 0, 102, 0.3);
+        }
+        
+        .send-btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(to right, #ff6699, #cc0066);
+            color: white;
+            border: none;
+            border-radius: 15px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(204, 0, 102, 0.3);
+        }
+        
+        .send-btn:hover {
+            background: linear-gradient(to right, #cc0066, #990033);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(204, 0, 102, 0.4);
+        }
+        
+        .send-btn:active {
+            transform: translateY(1px);
+        }
+        
+        .send-btn i {
+            margin-right: 10px;
+        }
+        
+        /* Response message */
+        .response {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: 600;
+            display: none;
+        }
+        
+        .success {
+            background: #e6ffe6;
+            color: #006600;
+            border: 1px solid #99ff99;
+        }
+        
+        .error {
+            background: #ffe6e6;
+            color: #cc0000;
+            border: 1px solid #ff9999;
+        }
+        
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: #993366;
+            font-size: 0.9rem;
+            position: relative;
+            z-index: 10;
+            margin-top: 40px;
+        }
+        
+        /* Developer Section */
+        .developer-section {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 25px;
+            max-width: 800px;
+            margin: 30px auto;
+            box-shadow: 0 10px 30px rgba(204, 0, 102, 0.2);
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .developer-section h4 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
+            color: #cc0066;
+            margin-bottom: 15px;
+        }
+        
+        .developer-section p {
+            color: #660033;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        
+        /* Glass Instagram Button */
+        .instagram-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 12px 30px;
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50px;
+            color: #cc0066;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 32px rgba(204, 0, 102, 0.2);
+            margin-top: 10px;
+        }
+        
+        .instagram-btn:hover {
+            background: rgba(255, 255, 255, 0.4);
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(204, 0, 102, 0.3);
+            color: #990033;
+        }
+        
+        .instagram-btn i {
+            font-size: 1.3rem;
+        }
+        
+        /* Floating hearts animation */
+        .floating-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 2;
+        }
+        
+        .heart {
+            position: absolute;
+            font-size: 24px;
+            opacity: 0;
+            animation: float 8s ease-in infinite;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg) scale(0.8);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.9;
+            }
+            90% {
+                opacity: 0.9;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg) scale(1.2);
+                opacity: 0;
+            }
+        }
+        
+        /* Telegram Message Notification */
+        .telegram-notification {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #0088cc, #00aced);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            z-index: 100;
+            animation: slideUp 5s ease-in-out forwards;
+            max-width: 90%;
+            opacity: 0;
+        }
+        
+        @keyframes slideUp {
+            0% {
+                bottom: -100px;
+                opacity: 0;
+            }
+            10% {
+                bottom: 20px;
+                opacity: 1;
+            }
+            90% {
+                bottom: 20px;
+                opacity: 1;
+            }
+            100% {
+                bottom: 20px;
+                opacity: 0;
+            }
+        }
+        
+        .telegram-icon {
+            font-size: 24px;
+            color: white;
+        }
+        
+        .notification-content {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .notification-sender {
+            font-weight: bold;
+            font-size: 16px;
+        }
+        
+        .notification-message {
+            font-size: 14px;
+            max-width: 300px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        /* Simulate Telegram Button */
+        .simulate-btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(to right, #0088cc, #00aced);
+            color: white;
+            border: none;
+            border-radius: 15px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 136, 204, 0.3);
+            margin-top: 15px;
+        }
+        
+        .simulate-btn:hover {
+            background: linear-gradient(to right, #00aced, #0088cc);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 136, 204, 0.4);
+        }
+        
+        /* Vibration effect */
+        @keyframes vibrate {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            50% { transform: translateX(5px); }
+            75% { transform: translateX(-5px); }
+            100% { transform: translateX(0); }
+        }
+        
+        .vibrate {
+            animation: vibrate 0.5s linear infinite;
+        }
+        
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.8rem;
+            }
+            
+            .message-container h2 {
+                font-size: 2.2rem;
+            }
+            
+            .content {
+                gap: 20px;
+            }
+            
+            .gif-container, .message-container, .message-box, .developer-section {
+                padding: 20px;
+            }
+            
+            .instagram-btn {
+                padding: 10px 20px;
+                font-size: 1rem;
+            }
+        }
+        
+        /* Fun note */
+        .fun-note {
+            margin-top: 20px;
+            font-style: italic;
+            color: #993366;
+            font-size: 0.9rem;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 10px;
+        }
+        
+        /* Test Controls */
+        .test-controls {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 20px;
+            max-width: 800px;
+            margin: 20px auto;
+            box-shadow: 0 10px 30px rgba(204, 0, 102, 0.2);
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .test-controls h4 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.8rem;
+            color: #cc0066;
+            margin-bottom: 15px;
+        }
+        
+        .test-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+        
+        .test-btn {
+            padding: 10px 20px;
+            background: linear-gradient(to right, #ff9966, #ff5e62);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .test-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 94, 98, 0.4);
+        }
+    </style>
+</head>
+<body>
+    <!-- Canvas for falling emojis -->
+    <canvas id="emojiCanvas"></canvas>
+    
+    <!-- Canvas for fireworks -->
+    <canvas id="fireworksCanvas"></canvas>
+    
+    <!-- Floating hearts and flowers -->
+    <div class="floating-hearts" id="floatingHearts"></div>
+    
+    <!-- Telegram notification container -->
+    <div id="notificationContainer"></div>
+    
+    <!-- Main container -->
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>For My Beautiful Manisha <span class="heart-beat">❤️</span></h1>
+            <p>Every moment with you feels like a beautiful dream. This is a special place where I can send you all my love and thoughts.</p>
+        </div>
+        
+        <!-- Content with GIF and message -->
+        <div class="content">
+            <div class="gif-container">
+                <!-- Tenor GIF -->
+                <div class="tenor-gif-embed" 
+                     data-postid="253027946666209433" 
+                     data-share-method="host" 
+                     data-aspect-ratio="1.37853" 
+                     data-width="100%">
+                    <a href="https://tenor.com/view/mochi-cat-mochi-and-goma-goma-and-peach-mochi-mochi-peach-cat-gif-gif-253027946666209433">Mochi Cat GIF</a>
+                </div>
+            </div>
+            
+            <div class="message-container">
+                <h2>My Love For You</h2>
+                <div class="message-text">
+                    <p>Hehehehe, I knew it! 😘</p>
+                    <p>I LOVE YOU TOO, MANISHA! ❤️</p>
+                    <p>Every day with you is a blessing. Your smile lights up my world, and your laughter is my favorite melody. You're the most beautiful person I know, inside and out.</p>
+                    <p>No matter where life takes us, I'll always be grateful for your love. You make everything better just by being you.</p>
+                    <p>Forever yours, with all my heart.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Message sending box -->
+        <div class="message-box">
+            <h3>Send a Love Message <i class="fas fa-heart"></i></h3>
+            <p style="text-align: center; margin-bottom: 20px; color: #993366;">Type your message below and it will be sent directly to Manisha via Telegram</p>
+            
+            <div class="form-group">
+                <textarea id="messageInput" placeholder="Type your sweet message here... 💌"></textarea>
+            </div>
+            
+            <button class="send-btn" id="sendBtn">
+                <i class="fas fa-paper-plane"></i> Send Love Message
+            </button>
+            
+            <!-- Simulate Telegram Message Button -->
+            <button class="simulate-btn" id="simulateBtn">
+                <i class="fab fa-telegram"></i> Simulate Telegram Message
+            </button>
+            
+            <div id="response" class="response"></div>
+        </div>
+        
+        <!-- Test Controls -->
+        <div class="test-controls">
+            <h4>Test Telegram Messages</h4>
+            <p style="margin-bottom: 15px; color: #660033;">Click buttons below to simulate different Telegram messages</p>
+            
+            <div class="test-buttons">
+                <button class="test-btn" id="textMsgBtn">📝 Text Message</button>
+                <button class="test-btn" id="emojiMsgBtn">😍 Emoji Message</button>
+                <button class="test-btn" id="heartMsgBtn">💖 Heart Message</button>
+                <button class="test-btn" id="flowerMsgBtn">🌸 Flower Message</button>
+                <button class="test-btn" id="loveMsgBtn">💌 Love Message</button>
+            </div>
+        </div>
+        
+        <!-- Developer Section -->
+        <div class="developer-section">
+            <h4>Made with Love 💖</h4>
+            <p>This beautiful page was created by Sandeep Yadav</p>
+            <p>If you like this page and want to connect with the developer:</p>
+            
+            <a href="https://instagram.com/sandeep_yadav_._._" target="_blank" class="instagram-btn">
+                <i class="fab fa-instagram"></i> Follow on Instagram
+            </a>
+            
+            <div class="fun-note">
+                <p>PS: Agar tum dono ka patch ho jaye to mere liye GF dhund dena! Aur party bhi chahiye commission ke taur pe! 🎉😉</p>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            <p>Made with <i class="fas fa-heart" style="color: #cc0066;"></i> for Manisha | Every moment with you is special</p>
+            <p style="margin-top: 10px; font-size: 0.8rem;">Created by Sandeep Yadav | Instagram: @sandeep_yadav_._._</p>
+        </div>
+    </div>
+    
+    <!-- Tenor GIF Embed Script -->
+    <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+    
+    <script>
+        // Telegram Bot Configuration
+        const TELEGRAM_BOT_TOKEN = '7941135502:AAHz-KGvAAoZEhPVgfVKw3zFbkaB0_Pi5rM';
+        const TELEGRAM_CHAT_IDS = ['878604830', '6828631328'];
+        
+        // DOM Elements
+        const messageInput = document.getElementById('messageInput');
+        const sendBtn = document.getElementById('sendBtn');
+        const responseDiv = document.getElementById('response');
+        const simulateBtn = document.getElementById('simulateBtn');
+        const notificationContainer = document.getElementById('notificationContainer');
+        
+        // Test buttons
+        const textMsgBtn = document.getElementById('textMsgBtn');
+        const emojiMsgBtn = document.getElementById('emojiMsgBtn');
+        const heartMsgBtn = document.getElementById('heartMsgBtn');
+        const flowerMsgBtn = document.getElementById('flowerMsgBtn');
+        const loveMsgBtn = document.getElementById('loveMsgBtn');
+        
+        // Send message to Telegram
+        sendBtn.addEventListener('click', async () => {
+            const message = messageInput.value.trim();
+            
+            if (!message) {
+                showResponse('Please enter a message first!', false);
+                return;
+            }
+            
+            // Disable button and show loading
+            sendBtn.disabled = true;
+            sendBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            
+            try {
+                // Send to all chat IDs
+                let allSuccessful = true;
+                
+                for (const chatId of TELEGRAM_CHAT_IDS) {
+                    const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
+                    
+                    const response = await fetch(url, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            chat_id: chatId,
+                            text: `💌 New Love Message for Manisha:\n\n"${message}"\n\nSent from the love website ❤️`
+                        })
+                    });
+                    
+                    if (!response.ok) {
+                        allSuccessful = false;
+                        console.error(`Failed to send to chat ID ${chatId}`);
+                    }
+                }
+                
+                if (allSuccessful) {
+                    showResponse('Message sent to Naveen! ❤️', true);
+                    messageInput.value = '';
+                    
+                    // Add a visual confirmation
+                    createHeartsFlowersConfirmation();
+                    
+                    // Simulate a response from Telegram after 2 seconds
+                    setTimeout(() => {
+                        simulateTelegramMessage('Manisha', 'Thank you for the lovely message! 😘');
+                    }, 2000);
+                } else {
+                    showResponse('Message partially sent. Some recipients may not have received it.', false);
+                }
+            } catch (error) {
+                console.error('Error sending message:', error);
+                showResponse('Failed to send message. Please try again.', false);
+            } finally {
+                // Re-enable button
+                sendBtn.disabled = false;
+                sendBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Love Message';
+            }
+        });
+        
+        // Simulate Telegram message button
+        simulateBtn.addEventListener('click', () => {
+            const messages = [
+                { sender: 'Manisha', message: 'I love you too! ❤️', emoji: '❤️' },
+                { sender: 'Naveen', message: 'You two are so cute together! 😊', emoji: '😊' },
+                { sender: 'Manisha', message: 'Thinking of you! 💭', emoji: '💭' },
+                { sender: 'Friend', message: 'When is the wedding? 👰', emoji: '👰' }
+            ];
+            
+            const randomMsg = messages[Math.floor(Math.random() * messages.length)];
+            simulateTelegramMessage(randomMsg.sender, randomMsg.message);
+        });
+        
+        // Test buttons for different message types
+        textMsgBtn.addEventListener('click', () => {
+            simulateTelegramMessage('Manisha', 'Hey! How was your day?');
+        });
+        
+        emojiMsgBtn.addEventListener('click', () => {
+            simulateTelegramMessage('Manisha', '😍😘🥰💖💕');
+        });
+        
+        heartMsgBtn.addEventListener('click', () => {
+            simulateTelegramMessage('Manisha', '❤️💖💕💗💓💞💝');
+        });
+        
+        flowerMsgBtn.addEventListener('click', () => {
+            simulateTelegramMessage('Manisha', '🌸🌹🌺🌷💐🌼🌻');
+        });
+        
+        loveMsgBtn.addEventListener('click', () => {
+            simulateTelegramMessage('Manisha', 'I miss you so much! Can\'t wait to see you! 💌');
+        });
+        
+        // Function to simulate a Telegram message
+        function simulateTelegramMessage(sender, message) {
+            // Create notification element
+            const notification = document.createElement('div');
+            notification.className = 'telegram-notification';
+            notification.innerHTML = `
+                <div class="telegram-icon">
+                    <i class="fab fa-telegram"></i>
+                </div>
+                <div class="notification-content">
+                    <div class="notification-sender">${sender}</div>
+                    <div class="notification-message">${message}</div>
+                </div>
+            `;
+            
+            // Add to container
+            notificationContainer.appendChild(notification);
+            
+            // Remove after animation completes
+            setTimeout(() => {
+                notification.remove();
+            }, 5000);
+            
+            // Check if message contains emoji
+            const emojiRegex = /[\u{1F300}-\u{1F9FF}]|[\u{2600}-\u{26FF}]|[\u{2700}-\u{27BF}]/gu;
+            const hasEmoji = emojiRegex.test(message);
+            
+            if (hasEmoji) {
+                // Extract emojis from message
+                const emojis = message.match(emojiRegex) || ['🎉', '✨', '❤️', '💖', '🌸'];
+                
+                // Trigger fireworks with emojis
+                triggerFireworks(emojis);
+                
+                // Vibrate device if supported
+                vibrateDevice();
+                
+                // Add vibrate effect to body
+                document.body.classList.add('vibrate');
+                setTimeout(() => {
+                    document.body.classList.remove('vibrate');
+                }, 1000);
+            }
+        }
+        
+        // Show response message
+        function showResponse(message, isSuccess) {
+            responseDiv.textContent = message;
+            responseDiv.className = `response ${isSuccess ? 'success' : 'error'}`;
+            responseDiv.style.display = 'block';
+            
+            // Hide after 5 seconds
+            setTimeout(() => {
+                responseDiv.style.display = 'none';
+            }, 5000);
+        }
+        
+        // Create hearts and flowers confirmation animation
+        function createHeartsFlowersConfirmation() {
+            const heartsContainer = document.getElementById('floatingHearts');
+            
+            for (let i = 0; i < 20; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.className = 'heart';
+                    // Mix of hearts and flowers
+                    const emojis = ['❤️', '💖', '💕', '🌸', '🌹', '🌺', '🌷', '💐', '🌼'];
+                    heart.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
+                    heart.style.left = `${Math.random() * 100}%`;
+                    heart.style.fontSize = `${Math.random() * 25 + 20}px`;
+                    heart.style.animationDuration = `${Math.random() * 4 + 6}s`;
+                    heart.style.animationDelay = `${Math.random() * 2}s`;
+                    
+                    heartsContainer.appendChild(heart);
+                    
+                    // Remove heart after animation completes
+                    setTimeout(() => {
+                        if (heart.parentNode) {
+                            heart.remove();
+                        }
+                    }, 9000);
+                }, i * 200);
+            }
+        }
+        
+        // Vibrate device
+        function vibrateDevice() {
+            if (navigator.vibrate) {
+                // Vibrate pattern: vibrate for 200ms, pause for 100ms, vibrate for 200ms
+                navigator.vibrate([200, 100, 200, 100, 200]);
+            }
+        }
+        
+        // Fireworks Canvas
+        const fireworksCanvas = document.getElementById('fireworksCanvas');
+        const fwCtx = fireworksCanvas.getContext('2d');
+        
+        // Set canvas size
+        fireworksCanvas.width = window.innerWidth;
+        fireworksCanvas.height = window.innerHeight;
+        
+        // Firework particles
+        let fireworks = [];
+        let particles = [];
+        
+        // Firework class
+        class Firework {
+            constructor(x, y, emoji) {
+                this.x = x;
+                this.y = y;
+                this.emoji = emoji;
+                this.particles = [];
+                this.exploded = false;
+                
+                // Create particles
+                const particleCount = 50;
+                const colors = ['#FF0000', '#FF69B4', '#FF1493', '#FF00FF', '#FF4500'];
+                
+                for (let i = 0; i < particleCount; i++) {
+                    const angle = Math.random() * Math.PI * 2;
+                    const speed = Math.random() * 5 + 2;
+                    const velocity = {
+                        x: Math.cos(angle) * speed,
+                        y: Math.sin(angle) * speed
+                    };
+                    
+                    this.particles.push({
+                        x: this.x,
+                        y: this.y,
+                        velocity,
+                        size: Math.random() * 20 + 10,
+                        life: 1,
+                        decay: Math.random() * 0.02 + 0.01,
+                        color: colors[Math.floor(Math.random() * colors.length)],
+                        rotation: 0,
+                        rotationSpeed: (Math.random() - 0.5) * 0.2,
+                        emoji: this.emoji
+                    });
+                }
+                
+                this.exploded = true;
+            }
+            
+            update() {
+                for (let i = this.particles.length - 1; i >= 0; i--) {
+                    const p = this.particles[i];
+                    
+                    p.x += p.velocity.x;
+                    p.y += p.velocity.y;
+                    p.velocity.y += 0.05; // gravity
+                    p.life -= p.decay;
+                    p.rotation += p.rotationSpeed;
+                    
+                    if (p.life <= 0) {
+                        this.particles.splice(i, 1);
+                    }
+                }
+                
+                return this.particles.length > 0;
+            }
+            
+            draw() {
+                for (const p of this.particles) {
+                    fwCtx.save();
+                    fwCtx.globalAlpha = p.life;
+                    fwCtx.translate(p.x, p.y);
+                    fwCtx.rotate(p.rotation);
+                    fwCtx.font = `${p.size}px Arial`;
+                    fwCtx.fillStyle = p.color;
+                    fwCtx.textAlign = 'center';
+                    fwCtx.textBaseline = 'middle';
+                    fwCtx.fillText(p.emoji, 0, 0);
+                    fwCtx.restore();
+                }
+            }
+        }
+        
+        // Trigger fireworks with specific emojis
+        function triggerFireworks(emojis) {
+            const centerX = fireworksCanvas.width / 2;
+            const centerY = fireworksCanvas.height / 2;
+            
+            // Create multiple fireworks
+            for (let i = 0; i < 5; i++) {
+                setTimeout(() => {
+                    const x = Math.random() * fireworksCanvas.width;
+                    const y = Math.random() * fireworksCanvas.height / 2;
+                    const emoji = emojis[Math.floor(Math.random() * emojis.length)];
+                    fireworks.push(new Firework(x, y, emoji));
+                }, i * 200);
+            }
+            
+            // Also create fireworks around the center
+            for (let i = 0; i < 3; i++) {
+                setTimeout(() => {
+                    const angle = Math.PI * 2 * (i / 3);
+                    const distance = 100;
+                    const x = centerX + Math.cos(angle) * distance;
+                    const y = centerY + Math.sin(angle) * distance;
+                    const emoji = emojis[Math.floor(Math.random() * emojis.length)];
+                    fireworks.push(new Firework(x, y, emoji));
+                }, i * 300);
+            }
+        }
+        
+        // Animation loop for fireworks
+        function animateFireworks() {
+            // Clear with a slight fade for trailing effect
+            fwCtx.fillStyle = 'rgba(255, 204, 230, 0.1)';
+            fwCtx.fillRect(0, 0, fireworksCanvas.width, fireworksCanvas.height);
+            
+            // Update and draw fireworks
+            for (let i = fireworks.length - 1; i >= 0; i--) {
+                const firework = fireworks[i];
+                
+                if (!firework.update()) {
+                    fireworks.splice(i, 1);
+                } else {
+                    firework.draw();
+                }
+            }
+            
+            requestAnimationFrame(animateFireworks);
+        }
+        
+        // Canvas for falling emojis
+        const canvas = document.getElementById('emojiCanvas');
+        const ctx = canvas.getContext('2d');
+        
+        // Set canvas size
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        
+        // Emoji array - mix of hearts and flowers
+        const emojis = ['❤️', '💖', '💕', '💗', '💓', '💞', '💝', '🌸', '🌹', '🥀', '🌺', '🌷', '💐', '🌼', '🌻', '🎉', '✨', '🌟', '💫', '🥰', '😍', '😘', '💋'];
+        
+        // Emoji objects
+        let emojiArray = [];
+        
+        // Create emoji class
+        class FallingEmoji {
+            constructor() {
+                this.reset();
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+            }
+            
+            reset() {
+                this.emoji = emojis[Math.floor(Math.random() * emojis.length)];
+                this.x = Math.random() * canvas.width;
+                this.y = -50;
+                this.size = Math.random() * 30 + 25;
+                this.speed = Math.random() * 3 + 2;
+                this.opacity = Math.random() * 0.7 + 0.3;
+                this.wobble = Math.random() * 0.05;
+                this.wobbleSpeed = Math.random() * 0.05 + 0.02;
+                this.wobbleOffset = Math.random() * Math.PI * 2;
+                this.rotation = 0;
+                this.rotationSpeed = Math.random() * 0.05 - 0.025;
+            }
+            
+            update() {
+                this.y += this.speed;
+                this.x += Math.sin(Date.now() * this.wobbleSpeed + this.wobbleOffset) * this.wobble;
+                this.rotation += this.rotationSpeed;
+                
+                if (this.y > canvas.height) {
+                    this.reset();
+                    this.y = -50;
+                }
+            }
+            
+            draw() {
+                ctx.save();
+                ctx.translate(this.x, this.y);
+                ctx.rotate(this.rotation);
+                ctx.font = `${this.size}px Arial`;
+                ctx.globalAlpha = this.opacity;
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText(this.emoji, 0, 0);
+                ctx.globalAlpha = 1;
+                ctx.restore();
+            }
+        }
+        
+        // Create initial emojis
+        function initEmojis() {
+            emojiArray = [];
+            const emojiCount = Math.min(80, Math.floor(window.innerWidth / 15));
+            
+            for (let i = 0; i < emojiCount; i++) {
+                emojiArray.push(new FallingEmoji());
+            }
+        }
+        
+        // Animation loop for falling emojis
+        function animate() {
+            // Clear with a slight fade effect for trailing effect
+            ctx.fillStyle = 'rgba(255, 204, 230, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            for (let i = 0; i < emojiArray.length; i++) {
+                emojiArray[i].update();
+                emojiArray[i].draw();
+            }
+            
+            requestAnimationFrame(animate);
+        }
+        
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            fireworksCanvas.width = window.innerWidth;
+            fireworksCanvas.height = window.innerHeight;
+            initEmojis();
+        });
+        
+        // Initialize and start animations
+        initEmojis();
+        animate();
+        animateFireworks();
+        
+        // Create continuous floating hearts and flowers in background
+        function createContinuousHeartsFlowers() {
+            const heartsContainer = document.getElementById('floatingHearts');
+            
+            // Create more initially
+            for (let i = 0; i < 40; i++) {
+                setTimeout(() => {
+                    createHeartFlower(heartsContainer);
+                }, i * 500);
+            }
+            
+            // Keep adding more continuously
+            setInterval(() => {
+                for (let i = 0; i < 3; i++) {
+                    createHeartFlower(heartsContainer);
+                }
+            }, 2000);
+        }
+        
+        // Create a single heart/flower element
+        function createHeartFlower(container) {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            const emojis = ['❤️', '💖', '💕', '🌸', '🌹', '🌺', '🌷', '💐', '🌼', '💗', '💓', '💞'];
+            heart.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
+            heart.style.left = `${Math.random() * 100}%`;
+            heart.style.fontSize = `${Math.random() * 30 + 20}px`;
+            heart.style.animationDuration = `${Math.random() * 6 + 8}s`;
+            heart.style.animationDelay = `${Math.random() * 2}s`;
+            
+            container.appendChild(heart);
+            
+            // Remove heart after animation completes
+            setTimeout(() => {
+                if (heart.parentNode) {
+                    heart.remove();
+                }
+            }, 10000);
+        }
+        
+        // Start continuous animation
+        window.addEventListener('load', () => {
+            createContinuousHeartsFlowers();
+            
+            // Simulate initial Telegram message after 3 seconds
+            setTimeout(() => {
+                simulateTelegramMessage('Manisha', 'Hi! I just saw your message... ❤️');
+            }, 3000);
+        });
+        
+        // Add enter key support for sending message
+        messageInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' && e.ctrlKey) {
+                sendBtn.click();
+            }
+        });
+        
+        // Instagram button interaction effect
+        const instagramBtn = document.querySelector('.instagram-btn');
+        if (instagramBtn) {
+            instagramBtn.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px) scale(1.05)';
+            });
+            
+            instagramBtn.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        }
+    </script>
+</body>
+</html>
