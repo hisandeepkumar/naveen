@@ -1,59 +1,58 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A Beautiful Conversation</title>
+    <title>नवीन और मनीषा की रोमांटिक जर्नी</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', 'Arial', 'Noto Sans Devanagari', sans-serif;
         }
         
         body {
-            background: linear-gradient(135deg, #ffe6f0 0%, #fff0f9 100%);
-            color: #5a0033;
+            background: linear-gradient(135deg, #ffd6e7 0%, #ffebf3 100%);
+            color: #660033;
             min-height: 100vh;
             overflow-x: hidden;
             position: relative;
         }
         
         .container {
-            max-width: 900px;
+            max-width: 950px;
             margin: 0 auto;
             padding: 30px 20px;
             position: relative;
-            z-index: 10;
+            z-index: 5;
         }
         
         .conversation-wrapper {
-            background-color: rgba(255, 255, 255, 0.92);
+            background-color: rgba(255, 255, 255, 0.95);
             border-radius: 30px;
-            padding: 40px;
-            box-shadow: 0 15px 40px rgba(255, 100, 175, 0.15);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 182, 193, 0.3);
+            padding: 50px;
+            box-shadow: 0 20px 50px rgba(255, 100, 175, 0.25);
+            border: 2px solid #ff80b3;
             position: relative;
             overflow: hidden;
+            min-height: 650px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
         
         .question-box {
             text-align: center;
-            margin-bottom: 50px;
-            min-height: 300px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
+            margin-bottom: 40px;
             animation: fadeInUp 1s ease-out;
         }
         
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(30px);
+                transform: translateY(40px);
             }
             to {
                 opacity: 1;
@@ -62,93 +61,93 @@
         }
         
         .question-number {
-            font-size: 1rem;
-            color: #ff66a3;
+            font-size: 1.2rem;
+            color: #ff3399;
             margin-bottom: 15px;
-            letter-spacing: 2px;
-            font-weight: 600;
+            font-weight: 700;
+            letter-spacing: 1px;
+            background: linear-gradient(to right, #ff3399, #ff66b2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
         }
         
         .question {
-            font-size: 2.2rem;
+            font-size: 2.5rem;
             line-height: 1.4;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
             color: #99004d;
-            font-weight: 300;
+            font-weight: 600;
             padding: 0 20px;
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
-            position: relative;
         }
         
-        .question::before {
-            content: "“";
-            font-size: 5rem;
-            color: #ffb3d9;
-            position: absolute;
-            left: -10px;
-            top: -40px;
-            opacity: 0.3;
-        }
-        
-        .question::after {
-            content: "”";
-            font-size: 5rem;
-            color: #ffb3d9;
-            position: absolute;
-            right: -10px;
-            bottom: -60px;
-            opacity: 0.3;
+        .bollywood-ref {
+            font-size: 1.3rem;
+            color: #ff3399;
+            margin-top: 15px;
+            font-style: italic;
+            padding: 10px 20px;
+            background-color: #fff0f7;
+            border-radius: 15px;
+            display: inline-block;
+            border-left: 4px solid #ff3399;
         }
         
         .options {
             display: flex;
             justify-content: center;
-            gap: 40px;
-            margin-top: 40px;
+            gap: 50px;
+            margin-top: 50px;
             position: relative;
         }
         
         .option-btn {
-            padding: 18px 50px;
-            font-size: 1.5rem;
+            padding: 20px 60px;
+            font-size: 1.8rem;
             border: none;
-            border-radius: 60px;
+            border-radius: 70px;
             cursor: pointer;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            font-weight: 600;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            font-weight: 700;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
             position: relative;
             overflow: hidden;
-            z-index: 2;
-            min-width: 180px;
+            z-index: 10;
+            min-width: 220px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
         }
         
         .yes-btn {
-            background: linear-gradient(to right, #ff4d94, #ff3385);
+            background: linear-gradient(to right, #ff0066, #ff3399);
             color: white;
-            border: 2px solid #ff80b3;
+            border: 3px solid #ff80b3;
         }
         
         .yes-btn:hover {
-            transform: translateY(-8px) scale(1.05);
-            box-shadow: 0 15px 30px rgba(255, 51, 133, 0.3);
-            background: linear-gradient(to right, #ff3385, #ff0066);
+            transform: translateY(-10px) scale(1.08);
+            box-shadow: 0 20px 40px rgba(255, 51, 153, 0.4);
+            background: linear-gradient(to right, #ff3399, #ff0066);
         }
         
         .no-btn {
-            background: linear-gradient(to right, #cccccc, #b3b3b3);
+            background: linear-gradient(to right, #b3b3b3, #999999);
             color: #666666;
-            border: 2px solid #d9d9d9;
+            border: 3px solid #cccccc;
             position: relative;
             transition: all 0.2s ease;
         }
         
-        /* No button will move away when mouse approaches */
+        /* No button movement on hover */
         .no-btn:hover {
-            transform: translate(calc(100vw * var(--random-x)), calc(100vh * var(--random-y)));
+            transform: translate(calc(100vw * var(--random-x)), calc(100vh * var(--random-y))) scale(1.1);
             opacity: 0.9;
         }
         
+        /* High z-index emoji container */
         .emoji-container {
             position: fixed;
             top: 0;
@@ -156,28 +155,30 @@
             width: 100%;
             height: 100%;
             pointer-events: none;
-            z-index: 5;
+            z-index: 9999 !important; /* Highest z-index */
             overflow: hidden;
         }
         
         .emoji {
             position: absolute;
-            font-size: 2rem;
-            z-index: 5;
+            font-size: 2.5rem;
+            z-index: 10000 !important;
             opacity: 0;
+            pointer-events: none;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
         }
         
         .heart {
-            animation: floatHearts 8s linear infinite;
+            animation: floatHearts 10s linear infinite;
         }
         
         .flower {
-            animation: floatFlowers 12s linear infinite;
+            animation: floatFlowers 14s linear infinite;
         }
         
         @keyframes floatHearts {
             0% {
-                transform: translateY(100vh) rotate(0deg);
+                transform: translateY(110vh) rotate(0deg);
                 opacity: 0;
             }
             10% {
@@ -187,68 +188,70 @@
                 opacity: 1;
             }
             100% {
-                transform: translateY(-100px) rotate(360deg);
+                transform: translateY(-150px) rotate(360deg);
                 opacity: 0;
             }
         }
         
         @keyframes floatFlowers {
             0% {
-                transform: translateY(100vh) rotate(0deg) scale(0.5);
+                transform: translateY(110vh) rotate(0deg) scale(0.5);
                 opacity: 0;
             }
             15% {
                 opacity: 1;
-                transform: translateY(80vh) rotate(120deg) scale(1);
+                transform: translateY(90vh) rotate(180deg) scale(1.2);
             }
             90% {
                 opacity: 1;
             }
             100% {
-                transform: translateY(-100px) rotate(720deg) scale(0.8);
+                transform: translateY(-150px) rotate(720deg) scale(1);
                 opacity: 0;
             }
         }
         
         .balloon {
             position: absolute;
-            width: 70px;
-            height: 90px;
+            width: 80px;
+            height: 100px;
             border-radius: 50%;
-            animation: balloonFloat 15s linear infinite;
-            z-index: 4;
+            animation: balloonFloat 18s linear infinite;
+            z-index: 9998 !important;
             opacity: 0;
+            pointer-events: none;
         }
         
         .balloon::after {
             content: '';
             position: absolute;
-            width: 2px;
-            height: 60px;
-            background-color: rgba(255, 255, 255, 0.7);
-            top: 90px;
-            left: 34px;
+            width: 3px;
+            height: 70px;
+            background-color: rgba(255, 255, 255, 0.8);
+            top: 100px;
+            left: 39px;
+            border-radius: 2px;
         }
         
         @keyframes balloonFloat {
             0% {
-                transform: translateY(100vh) scale(0.3);
+                transform: translateY(110vh) scale(0.3);
                 opacity: 0;
             }
             10% {
-                opacity: 0.8;
+                opacity: 0.9;
             }
-            50% {
-                opacity: 0.8;
+            60% {
+                opacity: 0.9;
             }
             100% {
-                transform: translateY(-200px) scale(1);
+                transform: translateY(-200px) scale(1.2);
                 opacity: 0;
             }
         }
         
         .balloon-burst {
-            animation: burst 0.5s ease-out forwards;
+            animation: burst 0.7s ease-out forwards;
             opacity: 1;
         }
         
@@ -257,8 +260,12 @@
                 transform: scale(1);
                 opacity: 1;
             }
+            50% {
+                transform: scale(2.5);
+                opacity: 0.7;
+            }
             100% {
-                transform: scale(3);
+                transform: scale(4);
                 opacity: 0;
             }
         }
@@ -267,21 +274,22 @@
             display: flex;
             justify-content: center;
             margin-top: 60px;
-            gap: 15px;
+            gap: 12px;
+            flex-wrap: wrap;
         }
         
         .progress-dot {
-            width: 14px;
-            height: 14px;
+            width: 16px;
+            height: 16px;
             border-radius: 50%;
             background-color: #ffccdd;
             transition: all 0.5s ease;
         }
         
         .progress-dot.active {
-            background-color: #ff3385;
-            transform: scale(1.4);
-            box-shadow: 0 0 10px #ff80b3;
+            background-color: #ff3399;
+            transform: scale(1.5);
+            box-shadow: 0 0 15px #ff80b3;
         }
         
         .final-celebration {
@@ -290,15 +298,15 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(255, 230, 240, 0.95);
+            background: rgba(255, 214, 231, 0.98);
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            z-index: 100;
+            z-index: 10000 !important;
             opacity: 0;
             pointer-events: none;
-            transition: opacity 1.5s ease;
+            transition: opacity 2s ease;
         }
         
         .final-celebration.active {
@@ -307,50 +315,54 @@
         }
         
         .love-message {
-            font-size: 4.5rem;
+            font-size: 5rem;
             color: #ff0066;
             text-align: center;
-            font-weight: 700;
-            margin-bottom: 30px;
-            text-shadow: 3px 3px 0 #ffccdd;
-            animation: pulseLove 2s infinite;
+            font-weight: 800;
+            margin-bottom: 40px;
+            text-shadow: 4px 4px 0 #ffccdd, 8px 8px 0 rgba(255, 102, 178, 0.3);
+            animation: pulseLove 2.5s infinite;
             line-height: 1.2;
-            padding: 0 20px;
+            padding: 0 30px;
         }
         
         @keyframes pulseLove {
             0% {
                 transform: scale(1);
+                text-shadow: 4px 4px 0 #ffccdd, 8px 8px 0 rgba(255, 102, 178, 0.3);
             }
             50% {
-                transform: scale(1.05);
+                transform: scale(1.08);
+                text-shadow: 6px 6px 0 #ffccdd, 12px 12px 0 rgba(255, 102, 178, 0.4);
             }
             100% {
                 transform: scale(1);
+                text-shadow: 4px 4px 0 #ffccdd, 8px 8px 0 rgba(255, 102, 178, 0.3);
             }
         }
         
         .sub-message {
-            font-size: 1.8rem;
+            font-size: 2rem;
             color: #99004d;
             text-align: center;
-            margin-bottom: 50px;
-            font-weight: 300;
-            max-width: 600px;
-            line-height: 1.5;
+            margin-bottom: 60px;
+            font-weight: 500;
+            max-width: 800px;
+            line-height: 1.6;
+            padding: 0 30px;
         }
         
         .flirt-message {
-            position: absolute;
+            position: fixed;
             background-color: white;
-            padding: 25px;
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-            z-index: 200;
+            padding: 30px;
+            border-radius: 25px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+            z-index: 10001 !important;
             text-align: center;
-            border: 3px solid #ff80b3;
-            max-width: 400px;
-            animation: popIn 0.5s ease-out;
+            border: 4px solid #ff3399;
+            max-width: 500px;
+            animation: popIn 0.6s ease-out;
             display: none;
             top: 50%;
             left: 50%;
@@ -359,7 +371,7 @@
         
         @keyframes popIn {
             0% {
-                transform: translate(-50%, -50%) scale(0.7);
+                transform: translate(-50%, -50%) scale(0.6);
                 opacity: 0;
             }
             100% {
@@ -369,58 +381,76 @@
         }
         
         .close-flirt {
-            margin-top: 20px;
-            padding: 12px 30px;
-            background: linear-gradient(to right, #ff4d94, #ff3385);
+            margin-top: 25px;
+            padding: 15px 40px;
+            background: linear-gradient(to right, #ff0066, #ff3399);
             color: white;
             border: none;
-            border-radius: 50px;
+            border-radius: 60px;
             cursor: pointer;
-            font-weight: 600;
-            font-size: 1.1rem;
+            font-weight: 700;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
         }
         
-        .background-elements {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+        .close-flirt:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(255, 51, 153, 0.3);
+        }
+        
+        .bollywood-theme {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2.5rem;
+            color: #ff3399;
+            opacity: 0.7;
             z-index: 1;
-            pointer-events: none;
         }
         
-        .bg-heart {
-            position: absolute;
-            color: rgba(255, 102, 178, 0.07);
-            font-size: 8rem;
+        .hindi-text {
+            font-family: 'Noto Sans Devanagari', 'Segoe UI', sans-serif;
         }
         
-        .jaipur-element {
-            position: absolute;
-            font-size: 5rem;
-            opacity: 0.05;
-            color: #99004d;
-        }
-        
-        .hawa-mahal {
-            top: 10%;
-            right: 5%;
-        }
-        
-        .amber-fort {
-            bottom: 20%;
-            left: 5%;
-        }
-        
-        .johri-bazaar {
-            top: 40%;
-            left: 10%;
+        @media (max-width: 992px) {
+            .conversation-wrapper {
+                padding: 30px;
+                min-height: 600px;
+            }
+            
+            .question {
+                font-size: 2rem;
+            }
+            
+            .bollywood-ref {
+                font-size: 1.1rem;
+            }
+            
+            .option-btn {
+                padding: 18px 40px;
+                font-size: 1.6rem;
+                min-width: 180px;
+            }
+            
+            .love-message {
+                font-size: 3.5rem;
+            }
+            
+            .sub-message {
+                font-size: 1.6rem;
+            }
         }
         
         @media (max-width: 768px) {
-            .conversation-wrapper {
-                padding: 25px;
+            .options {
+                flex-direction: column;
+                align-items: center;
+                gap: 25px;
+            }
+            
+            .option-btn {
+                width: 85%;
+                max-width: 320px;
             }
             
             .question {
@@ -428,133 +458,217 @@
                 padding: 0 10px;
             }
             
-            .question::before, .question::after {
-                font-size: 3rem;
+            .progress-container {
+                gap: 8px;
             }
             
-            .question::before {
-                left: -5px;
-                top: -25px;
-            }
-            
-            .options {
-                flex-direction: column;
-                align-items: center;
-                gap: 20px;
-            }
-            
-            .option-btn {
-                width: 80%;
-                max-width: 300px;
-                padding: 16px 30px;
-            }
-            
-            .love-message {
-                font-size: 3rem;
-            }
-            
-            .sub-message {
-                font-size: 1.4rem;
-                padding: 0 20px;
+            .progress-dot {
+                width: 12px;
+                height: 12px;
             }
         }
         
-        .romantic-note {
-            font-size: 1.1rem;
-            color: #ff66a3;
-            font-style: italic;
-            margin-top: 20px;
-            opacity: 0.8;
+        /* Special celebration styles */
+        .special-emoji {
+            animation: specialFloat 20s linear infinite;
+            font-size: 3.5rem !important;
+        }
+        
+        @keyframes specialFloat {
+            0% {
+                transform: translateY(110vh) translateX(-50px) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            30% {
+                transform: translateY(70vh) translateX(50px) rotate(180deg);
+            }
+            70% {
+                transform: translateY(30vh) translateX(-30px) rotate(360deg);
+            }
+            100% {
+                transform: translateY(-100px) translateX(0) rotate(540deg);
+                opacity: 0;
+            }
+        }
+        
+        .firework {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            animation: fireworkExplode 1.5s ease-out forwards;
+            z-index: 10000;
+        }
+        
+        @keyframes fireworkExplode {
+            0% {
+                transform: translate(var(--x), 100vh) scale(0);
+                opacity: 1;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                transform: translate(var(--x), var(--y)) scale(1);
+                opacity: 0;
+            }
+        }
+        
+        .ddlj-icon {
+            position: absolute;
+            font-size: 4rem;
+            color: #ff0066;
+            opacity: 0.3;
+            z-index: 1;
+        }
+        
+        .ddlj1 {
+            top: 15%;
+            left: 8%;
+        }
+        
+        .ddlj2 {
+            bottom: 20%;
+            right: 10%;
+        }
+        
+        .ddlj3 {
+            top: 40%;
+            right: 15%;
         }
     </style>
 </head>
 <body>
-    <!-- Background elements -->
-    <div class="background-elements">
-        <div class="bg-heart" style="top: 5%; left: 8%;">❤</div>
-        <div class="bg-heart" style="top: 60%; right: 12%;">❤</div>
-        <div class="bg-heart" style="bottom: 15%; left: 15%;">❤</div>
-        
-        <!-- Jaipur elements -->
-        <div class="jaipur-element hawa-mahal">🕌</div>
-        <div class="jaipur-element amber-fort">🏰</div>
-        <div class="jaipur-element johri-bazaar">💎</div>
-    </div>
+    <!-- DDLJ decorative icons -->
+    <div class="ddlj-icon ddlj1">🎬</div>
+    <div class="ddlj-icon ddlj2">❤️</div>
+    <div class="ddlj-icon ddlj3">🎭</div>
     
-    <!-- Emoji container for continuous animations -->
+    <!-- High z-index emoji container -->
     <div class="emoji-container" id="emojiContainer"></div>
     
     <!-- Flirt message popup -->
     <div class="flirt-message" id="flirtMessage">
-        <h3>Wait! Let's think about this... ✨</h3>
-        <p>Just like the winds of Hawa Mahal that never stop, my feelings for you are constant and beautiful.</p>
-        <p>Would you reconsider? 😊</p>
-        <button class="close-flirt" id="closeFlirt">Okay, Let's Continue 💖</button>
+        <h3>अरे रुकिए जरा! ✨</h3>
+        <p>जैसे दिल्लगी में राज ने कभी हार नहीं मानी, वैसे ही मैं भी नहीं मानूंगा!</p>
+        <p>क्या आप फिर से सोचेंगी? 😊</p>
+        <button class="close-flirt" id="closeFlirt">हाँ, चलिए आगे बढ़ते हैं 💖</button>
     </div>
     
     <!-- Main content -->
     <div class="container">
         <div class="conversation-wrapper">
+            <div class="bollywood-theme">🎬 बॉलीवुड स्टाइल ❤️</div>
+            
             <div class="question-box" id="questionBox">
-                <div class="question-number" id="questionNumber">Question 1 of 7</div>
-                <div class="question" id="questionText">If Jaipur's Hawa Mahal had a thousand windows, would you let me be the breeze that whispers through every one to reach you?</div>
+                <div class="question-number" id="questionNumber">सवाल 1/20</div>
+                <div class="question hindi-text" id="questionText">क्या तुम मेरी सिमरन बनोगी, अगर मैं तुम्हारा दिल्लगी वाला राज बन जाऊं?</div>
                 
-                <div class="romantic-note" id="romanticNote">Just like the gentle winds of the Palace of Winds...</div>
+                <div class="bollywood-ref hindi-text" id="bollywoodRef">"जाते जाते पुकार के... मेरे हमदम मेरे दोस्त"</div>
                 
                 <div class="options">
-                    <button class="option-btn yes-btn" id="yesBtn">Yes 💖</button>
-                    <button class="option-btn no-btn" id="noBtn">No</button>
+                    <button class="option-btn yes-btn" id="yesBtn">हाँ 💖</button>
+                    <button class="option-btn no-btn" id="noBtn">नहीं</button>
                 </div>
             </div>
             
-            <div class="progress-container">
-                <div class="progress-dot active" id="dot1"></div>
-                <div class="progress-dot" id="dot2"></div>
-                <div class="progress-dot" id="dot3"></div>
-                <div class="progress-dot" id="dot4"></div>
-                <div class="progress-dot" id="dot5"></div>
-                <div class="progress-dot" id="dot6"></div>
-                <div class="progress-dot" id="dot7"></div>
+            <div class="progress-container" id="progressContainer">
+                <!-- Dots will be added dynamically by JavaScript -->
             </div>
         </div>
     </div>
     
     <!-- Final celebration -->
     <div class="final-celebration" id="finalCelebration">
-        <div class="love-message" id="loveMessage">I love you too, Manisha! 💕</div>
-        <div class="sub-message">Every moment with you feels like a beautiful verse in the poetry of my life. From our first meeting to exploring Jaipur together, you've made every day special.</div>
+        <div class="love-message hindi-text" id="loveMessage">मैं भी तुमसे प्यार करता हूँ, मनीषा! 💕</div>
+        <div class="sub-message hindi-text">हर पल तुम्हारे साथ जैसे कोई बॉलीवुड गाना है... जयपुर की गलियों से लेकर हमारे दिलों तक, तुम्हारा साथ ही मेरी कहानी है।</div>
     </div>
 
     <script>
-        // Questions with romantic Jaipur-themed flirtations
+        // 20 Hindi questions with Bollywood/DDLJ references
         const questions = [
             {
-                text: "If Jaipur's Hawa Mahal had a thousand windows, would you let me be the breeze that whispers through every one to reach you?",
-                note: "Just like the gentle winds of the Palace of Winds..."
+                text: "क्या तुम मेरी सिमरन बनोगी, अगर मैं तुम्हारा दिल्लगी वाला राज बन जाऊं?",
+                ref: "\"जाते जाते पुकार के... मेरे हमदम मेरे दोस्त\""
             },
             {
-                text: "At Amber Fort, as the sun sets painting the sky in hues of love, would you watch this beautiful transition with me, hand in hand?",
-                note: "Amber Fort has seen many sunsets, but none as special as with you..."
+                text: "अगर जयपुर की हवा महल की हवाएं बोल सकतीं, तो क्या वो भी हमारे प्यार की कहानी सुनातीं?",
+                ref: "\"पल पल दिल के पास... तुम रहती हो\""
             },
             {
-                text: "In Johari Bazaar, amongst all the precious gems, if my eyes always find you, does that mean you're the most valuable jewel here?",
-                note: "Even the rarest diamonds pale in comparison to your smile..."
+                text: "क्या अम्बर फोर्ट की ऊंचाइयों से देखा सूरज डूबना, हमारे प्यार जैसा लगता है?",
+                ref: "\"तुझे देखा तो ये जाना सनम... प्यार हो गया\""
             },
             {
-                text: "If the Nahargarh Fort stands strong watching over Jaipur, can I be the one who stands strong for you, protecting every dream of yours?",
-                note: "Just like the fort on the hills, my feelings stand tall and unwavering..."
+                text: "जोहरी बाजार के हर जवाहरात में तेरा चेहरा दिखता है, क्या तू ही मेरी असली ज्वैलरी है?",
+                ref: "\"मेरे ख्वाबों में तू... मेरी हर ख्वाहिश में तू\""
             },
             {
-                text: "When we walk through the City Palace, and history whispers tales of romance, would you write our own love story with me here?",
-                note: "Every corridor here echoes with love stories; let's add ours to them..."
+                text: "अगर नाहरगढ़ फोर्ट हमारे प्यार की निशानी बने, तो क्या तू मेरे साथ वहां सूर्योदय देखने आएगी?",
+                ref: "\"ये कहानी फिर कभी... इस दिल की धड़कनों की\""
             },
             {
-                text: "If every step in Jantar Mantar measures time, can we measure our moments not in hours but in heartbeats when we're together?",
-                note: "Time stands still when I'm with you..."
+                text: "सिटी पैलेस के हर कोने में राजाओं की प्रेम कहानियां हैं, क्या हम भी अपनी कहानी वहां लिखेंगे?",
+                ref: "\"तुझ में रब दिखता है... यारा\""
             },
             {
-                text: "Manisha, after all these beautiful moments and conversations, do you feel what I feel? Do you love me?",
-                note: "This is the most important question of all..."
+                text: "जंतर मंतर समय मापता है, पर मेरा दिल तो तेरे साथ का हर पल अनमोल मापता है, क्या तू भी ऐसा ही महसूस करती है?",
+                ref: "\"समय का तो पता नहीं... पर तुम्हारा साथ ही सही\""
+            },
+            {
+                text: "अगर जल महल के पानी में हमारी परछाइयां एक साथ दिखें, तो क्या वो हमारे मिलन की तस्वीर होगी?",
+                ref: "\"पानी पानी हो गया... शाम सुहानी हो गई\""
+            },
+            {
+                text: "क्या तू चोखी धनी की रंगीनियों में मेरे साथ राजस्थानी लोक नृत्य करेगी?",
+                ref: "\"घूंघट की आड़ से... तेरा मुस्कुराना\""
+            },
+            {
+                text: "बिरला मंदिर की शांति में अगर हम साथ प्रार्थना करें, तो क्या भगवान हमें सदा साथ रखेंगे?",
+                ref: "\"ऐ दिल है मुश्किल... जीना यहां\""
+            },
+            {
+                text: "जयपुर की गुलाबी नगरी में गुलाबी रंग सबको प्यारा लगता है, पर मुझे तो तेरा हसीन चेहरा सबसे प्यारा लगता है, क्या तुझे भी ऐसा लगता है?",
+                ref: "\"गुलाबी गुलाबी आंखें... तेरी याद सताए\""
+            },
+            {
+                text: "अगर हवा महल की हवाएं हमारे प्यार के गीत गाएं, तो क्या तू उन्हें सुनना पसंद करेगी?",
+                ref: "\"हवा हवाई... प्यार भरा सा ये माहौल\""
+            },
+            {
+                text: "अम्बर फोर्ट के हाथी की सवारी पर अगर हम साथ बैठें, तो क्या ये यादगार सफर होगा?",
+                ref: "\"सवारी करे घोड़े की... या हाथी की\""
+            },
+            {
+                text: "जयपुर के स्ट्रीट फूड की तरह हमारा प्यार भी तीखा-मीठा है, क्या तू इस स्वाद को हमेशा के लिए चखना चाहेगी?",
+                ref: "\"मिठाई जैसी तू... चाट जैसा प्यार\""
+            },
+            {
+                text: "अल्बर्ट हॉल म्यूजियम की तरह हमारी यादों का भी एक संग्रहालय बनाएं, क्या तू मेरे साथ उसे भरने आएगी?",
+                ref: "\"यादों की बारात... दिल में समाए\""
+            },
+            {
+                text: "रामबाग पैलेस के बगीचों में फूलों की तरह हमारा प्यार भी खिले, क्या तू इस बगीचे की मालकिन बनेगी?",
+                ref: "\"फूलों सा रंगीन... हमारा ये प्यार\""
+            },
+            {
+                text: "जयपुर की रातों में तारों भरे आसमान के नीचे, क्या तू मेरे साथ अपने सपने साझा करेगी?",
+                ref: "\"चांदनी रातें... मेरे दिल की बातें\""
+            },
+            {
+                text: "पटाखों की तरह रंगीन है हमारा सफर, क्या तू हमेशा मेरे साथ इस सफर पर रहेगी?",
+                ref: "\"रंग बरसे... दिल की धड़कन भी रंगीन हो जाए\""
+            },
+            {
+                text: "जयपुर की हर गली हमारी मोहब्बत की कहानी कहे, क्या तू मेरे साथ ये कहानी लिखेगी?",
+                ref: "\"गली गली में है दस्तक... तेरे दिल की\""
+            },
+            {
+                text: "मनीषा, इतने सारे सवालों और जयपुर की यादों के बाद, क्या तुम मुझसे प्यार करती हो?",
+                ref: "\"प्यार किया तो डरना क्या...\""
             }
         ];
         
@@ -562,7 +676,7 @@
         const questionBox = document.getElementById('questionBox');
         const questionNumber = document.getElementById('questionNumber');
         const questionText = document.getElementById('questionText');
-        const romanticNote = document.getElementById('romanticNote');
+        const bollywoodRef = document.getElementById('bollywoodRef');
         const yesBtn = document.getElementById('yesBtn');
         const noBtn = document.getElementById('noBtn');
         const emojiContainer = document.getElementById('emojiContainer');
@@ -570,31 +684,40 @@
         const loveMessage = document.getElementById('loveMessage');
         const flirtMessage = document.getElementById('flirtMessage');
         const closeFlirt = document.getElementById('closeFlirt');
-        
-        // Progress dots
-        const progressDots = [
-            document.getElementById('dot1'),
-            document.getElementById('dot2'),
-            document.getElementById('dot3'),
-            document.getElementById('dot4'),
-            document.getElementById('dot5'),
-            document.getElementById('dot6'),
-            document.getElementById('dot7')
-        ];
+        const progressContainer = document.getElementById('progressContainer');
         
         // State variables
         let currentQuestion = 0;
         let noAttempts = 0;
         let isFinalQuestion = false;
         
-        // Initialize continuous animations
+        // Create progress dots based on number of questions
+        function createProgressDots() {
+            progressContainer.innerHTML = '';
+            for (let i = 0; i < questions.length; i++) {
+                const dot = document.createElement('div');
+                dot.classList.add('progress-dot');
+                dot.id = `dot${i+1}`;
+                if (i === 0) dot.classList.add('active');
+                progressContainer.appendChild(dot);
+            }
+        }
+        
+        // Initialize continuous animations with high z-index
         startContinuousAnimations();
+        createProgressDots();
+        
+        // Get all progress dots after they're created
+        let progressDots = [];
+        for (let i = 0; i < questions.length; i++) {
+            progressDots.push(document.getElementById(`dot${i+1}`));
+        }
         
         // Update the question display
         function updateQuestion() {
-            questionNumber.textContent = `Question ${currentQuestion + 1} of ${questions.length}`;
+            questionNumber.textContent = `सवाल ${currentQuestion + 1}/${questions.length}`;
             questionText.textContent = questions[currentQuestion].text;
-            romanticNote.textContent = questions[currentQuestion].note;
+            bollywoodRef.textContent = questions[currentQuestion].ref;
             
             // Update progress dots
             progressDots.forEach((dot, index) => {
@@ -607,41 +730,61 @@
             
             // Check if this is the final question
             isFinalQuestion = (currentQuestion === questions.length - 1);
+            
+            // Change button text for final question
+            if (isFinalQuestion) {
+                yesBtn.innerHTML = "हाँ, मैं तुमसे प्यार करती हूँ! 💖";
+            } else {
+                yesBtn.innerHTML = "हाँ 💖";
+            }
         }
         
-        // Start continuous background animations
+        // Start continuous background animations with high z-index
         function startContinuousAnimations() {
             // Create continuous hearts
             setInterval(() => {
-                createFloatingEmoji('❤️', 'heart', 1.5, 8);
-            }, 800);
+                createFloatingEmoji('❤️', 'heart', 2, 10);
+            }, 700);
             
             // Create continuous flowers
             setInterval(() => {
-                const flowers = ['🌸', '🌹', '🌺', '🌻', '💐'];
+                const flowers = ['🌸', '🌹', '🌺', '🌻', '💐', '🌷'];
                 const randomFlower = flowers[Math.floor(Math.random() * flowers.length)];
-                createFloatingEmoji(randomFlower, 'flower', 2, 12);
-            }, 1200);
+                createFloatingEmoji(randomFlower, 'flower', 2.5, 14);
+            }, 900);
+            
+            // Create special DDLJ themed emojis
+            setInterval(() => {
+                const specialEmojis = ['🎬', '🎭', '🎵', '🎤', '💃', '🕺'];
+                const randomEmoji = specialEmojis[Math.floor(Math.random() * specialEmojis.length)];
+                createFloatingEmoji(randomEmoji, 'special-emoji', 2, 18);
+            }, 1500);
             
             // Create continuous balloons
             setInterval(() => {
                 createBalloon();
-            }, 2000);
+            }, 1800);
             
             // Burst random balloons
             setInterval(() => {
                 burstRandomBalloon();
-            }, 1500);
+            }, 1300);
+            
+            // Create occasional fireworks
+            setInterval(() => {
+                createFirework();
+            }, 2500);
         }
         
         // Create a floating emoji
-        function createFloatingEmoji(emoji, type, sizeMultiplier, duration) {
+        function createFloatingEmoji(emoji, className, sizeMultiplier, duration) {
             const emojiElement = document.createElement('div');
-            emojiElement.classList.add('emoji', type);
+            emojiElement.classList.add('emoji', className);
             emojiElement.textContent = emoji;
             emojiElement.style.left = `${Math.random() * 100}vw`;
-            emojiElement.style.fontSize = `${Math.random() * sizeMultiplier + 1.5}rem`;
-            emojiElement.style.animationDuration = `${duration + Math.random() * 5}s`;
+            emojiElement.style.fontSize = `${Math.random() * sizeMultiplier + 2}rem`;
+            emojiElement.style.animationDuration = `${duration + Math.random() * 6}s`;
+            emojiElement.style.zIndex = '10000';
             
             emojiContainer.appendChild(emojiElement);
             
@@ -650,7 +793,7 @@
                 if (emojiElement.parentNode) {
                     emojiElement.remove();
                 }
-            }, (duration + 5) * 1000);
+            }, (duration + 6) * 1000);
         }
         
         // Create a balloon
@@ -659,12 +802,13 @@
             balloon.classList.add('balloon');
             
             // Random balloon color
-            const colors = ['#ff3385', '#ff66b2', '#ff0066', '#ff4d94', '#ff80b3'];
+            const colors = ['#ff0066', '#ff3399', '#ff66b2', '#ff4d94', '#ff80b3', '#ff1a8c'];
             balloon.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
             
             // Random position and animation delay
             balloon.style.left = `${Math.random() * 100}vw`;
-            balloon.style.animationDelay = `${Math.random() * 5}s`;
+            balloon.style.animationDelay = `${Math.random() * 8}s`;
+            balloon.style.zIndex = '9998';
             
             emojiContainer.appendChild(balloon);
             
@@ -673,7 +817,7 @@
                 if (balloon.parentNode) {
                     balloon.remove();
                 }
-            }, 16000);
+            }, 19000);
         }
         
         // Burst a random balloon
@@ -687,7 +831,44 @@
                     if (randomBalloon.parentNode) {
                         randomBalloon.remove();
                     }
-                }, 500);
+                }, 700);
+            }
+        }
+        
+        // Create a firework effect
+        function createFirework() {
+            const fireworkCount = 15 + Math.floor(Math.random() * 10);
+            const centerX = Math.random() * 80 + 10; // 10% to 90%
+            const centerY = Math.random() * 50 + 25; // 25% to 75%
+            
+            for (let i = 0; i < fireworkCount; i++) {
+                setTimeout(() => {
+                    const firework = document.createElement('div');
+                    firework.classList.add('firework');
+                    
+                    // Random color for firework
+                    const colors = ['#ff0066', '#ff3399', '#ff66b2', '#ffff00', '#00ff00', '#00ccff'];
+                    firework.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                    
+                    // Calculate random direction from center
+                    const angle = Math.random() * 2 * Math.PI;
+                    const distance = 30 + Math.random() * 50;
+                    const targetX = centerX + distance * Math.cos(angle);
+                    const targetY = centerY + distance * Math.sin(angle);
+                    
+                    // Set CSS custom properties for animation
+                    firework.style.setProperty('--x', `${targetX}vw`);
+                    firework.style.setProperty('--y', `${targetY}vh`);
+                    
+                    emojiContainer.appendChild(firework);
+                    
+                    // Remove firework after animation
+                    setTimeout(() => {
+                        if (firework.parentNode) {
+                            firework.remove();
+                        }
+                    }, 1500);
+                }, i * 30);
             }
         }
         
@@ -700,11 +881,6 @@
             if (currentQuestion < questions.length - 1) {
                 currentQuestion++;
                 updateQuestion();
-                
-                // If it's the final question, change button text
-                if (isFinalQuestion) {
-                    yesBtn.textContent = "Yes, I Love You! 💖";
-                }
             } else {
                 // Final question answered with "Yes"
                 showFinalCelebration();
@@ -716,8 +892,8 @@
             noAttempts++;
             
             // Set random position for the No button to move to
-            const randomX = Math.random() * 0.8 - 0.4; // Between -0.4 and 0.4
-            const randomY = Math.random() * 0.8 - 0.4; // Between -0.4 and 0.4
+            const randomX = Math.random() * 0.9 - 0.45; // Between -0.45 and 0.45
+            const randomY = Math.random() * 0.9 - 0.45; // Between -0.45 and 0.45
             
             // Apply CSS custom property for the random movement
             noBtn.style.setProperty('--random-x', randomX);
@@ -734,10 +910,10 @@
             if (isFinalQuestion && noAttempts >= 1) {
                 setTimeout(() => {
                     flirtMessage.innerHTML = `
-                        <h3>Wait, before you say no... 🌹</h3>
-                        <p>Every moment with you has been special. Every conversation, every laugh, every shared glance in Jaipur's beautiful places.</p>
-                        <p>Are you sure about your answer? ❤️</p>
-                        <button class="close-flirt" id="closeFlirt">Let Me Think Again</button>
+                        <h3>अरे नहीं! ऐसा मत कहो! 😢</h3>
+                        <p>दिल्लगी में राज ने कभी हार नहीं मानी, और मैं भी नहीं मानूंगा!</p>
+                        <p>क्या तुम सच में मुझसे प्यार नहीं करती? या फिर तुम्हारा दिल कुछ और कह रहा है? ❤️</p>
+                        <button class="close-flirt" id="closeFlirt">मेरा दिल तो कह रहा है हाँ 💖</button>
                     `;
                     flirtMessage.style.display = 'block';
                     
@@ -763,24 +939,23 @@
                 const moveY = Math.random() > 0.5 ? 100 : -100;
                 
                 noBtn.style.transform = `translate(${moveX}vw, ${moveY}vh)`;
-                noBtn.style.opacity = '0.5';
+                noBtn.style.opacity = '0.4';
                 
                 // Show special message
                 setTimeout(() => {
                     flirtMessage.innerHTML = `
-                        <h3>The heart knows what it wants 💓</h3>
-                        <p>Sometimes we resist what feels right because it's powerful. But true feelings have a way of finding their path.</p>
-                        <p>Like the pigeons of Jal Mahal returning home, love finds its way.</p>
-                        <button class="close-flirt" id="closeFlirt">You're Right 💖</button>
+                        <h3>दिल की बात दिल से कहो 💓</h3>
+                        <p>जैसे जयपुर की गुलाबी नगरी हर किसी का दिल जीत लेती है, वैसे ही तुमने मेरा दिल जीत लिया है।</p>
+                        <p>क्या तुम सच में मुझसे प्यार नहीं करती?</p>
+                        <button class="close-flirt" id="closeFlirt">मैं तुमसे प्यार करती हूँ 💖</button>
                     `;
                     flirtMessage.style.display = 'block';
                     
                     // Update the close button event listener
                     document.getElementById('closeFlirt').addEventListener('click', function() {
                         flirtMessage.style.display = 'none';
-                        // Move button back (but it will still run away on hover)
-                        noBtn.style.transform = 'translate(0, 0)';
-                        noBtn.style.opacity = '1';
+                        // Auto-click yes button
+                        yesBtn.click();
                     });
                 }, 500);
             }
@@ -789,17 +964,17 @@
         // Create special celebration for "Yes" clicks
         function createYesCelebration() {
             // Create burst of hearts
-            for (let i = 0; i < 15; i++) {
+            for (let i = 0; i < 20; i++) {
                 setTimeout(() => {
                     const heart = document.createElement('div');
                     heart.classList.add('emoji');
                     heart.textContent = '❤️';
                     heart.style.left = `${50 + (Math.random() * 40 - 20)}vw`;
                     heart.style.top = `${50 + (Math.random() * 40 - 20)}vh`;
-                    heart.style.fontSize = `${Math.random() * 3 + 2}rem`;
+                    heart.style.fontSize = `${Math.random() * 3 + 2.5}rem`;
                     heart.style.opacity = '1';
-                    heart.style.zIndex = '20';
-                    heart.style.animation = `heartBurst 1.5s ease-out forwards`;
+                    heart.style.zIndex = '10000';
+                    heart.style.animation = `heartBurst 1.8s ease-out forwards`;
                     
                     emojiContainer.appendChild(heart);
                     
@@ -808,74 +983,89 @@
                         if (heart.parentNode) {
                             heart.remove();
                         }
-                    }, 1500);
-                }, i * 100);
+                    }, 1800);
+                }, i * 80);
             }
             
             // Add CSS for heart burst animation
-            const style = document.createElement('style');
-            style.textContent = `
-                @keyframes heartBurst {
-                    0% { transform: scale(0) rotate(0deg); opacity: 0; }
-                    50% { transform: scale(1.5) rotate(180deg); opacity: 1; }
-                    100% { transform: scale(1) rotate(360deg); opacity: 0; }
-                }
-            `;
-            document.head.appendChild(style);
+            if (!document.querySelector('#heartBurstStyle')) {
+                const style = document.createElement('style');
+                style.id = 'heartBurstStyle';
+                style.textContent = `
+                    @keyframes heartBurst {
+                        0% { transform: scale(0) rotate(0deg); opacity: 0; }
+                        50% { transform: scale(2) rotate(180deg); opacity: 1; }
+                        100% { transform: scale(1) rotate(360deg); opacity: 0; }
+                    }
+                `;
+                document.head.appendChild(style);
+            }
         }
         
         // Show final celebration
         function showFinalCelebration() {
             // Hide the question box
             questionBox.style.opacity = '0';
-            questionBox.style.transition = 'opacity 1s';
+            questionBox.style.transition = 'opacity 1.5s';
             
-            // Show final celebration
+            // Show final celebration after delay
             setTimeout(() => {
                 finalCelebration.classList.add('active');
                 
                 // Create massive celebration
                 createMassiveCelebration();
-                
-                // Update love message with Manisha's name
-                loveMessage.textContent = "I love you too, Manisha! 💕";
-            }, 1000);
+            }, 1200);
         }
         
         // Create massive celebration for final
         function createMassiveCelebration() {
             // Create tons of hearts
-            for (let i = 0; i < 100; i++) {
+            for (let i = 0; i < 120; i++) {
                 setTimeout(() => {
-                    createFloatingEmoji('❤️', 'heart', 2, 10);
-                }, i * 50);
+                    createFloatingEmoji('❤️', 'heart', 3, 12);
+                }, i * 40);
             }
             
             // Create tons of flowers
-            const flowers = ['🌸', '🌹', '🌺', '🌻', '💐', '🥀'];
-            for (let i = 0; i < 80; i++) {
+            const flowers = ['🌸', '🌹', '🌺', '🌻', '💐', '🌷', '🥀'];
+            for (let i = 0; i < 100; i++) {
                 setTimeout(() => {
                     const randomFlower = flowers[Math.floor(Math.random() * flowers.length)];
-                    createFloatingEmoji(randomFlower, 'flower', 2.5, 15);
-                }, i * 60);
+                    createFloatingEmoji(randomFlower, 'flower', 3, 16);
+                }, i * 50);
             }
             
             // Create many balloons
-            for (let i = 0; i < 30; i++) {
+            for (let i = 0; i < 40; i++) {
                 setTimeout(() => {
                     createBalloon();
-                }, i * 200);
+                }, i * 180);
+            }
+            
+            // Create DDLJ themed emojis
+            for (let i = 0; i < 60; i++) {
+                setTimeout(() => {
+                    const ddljEmojis = ['🎬', '🎭', '🎵', '🎤', '💃', '🕺', '🎞️', '🎟️'];
+                    const randomEmoji = ddljEmojis[Math.floor(Math.random() * ddljEmojis.length)];
+                    createFloatingEmoji(randomEmoji, 'special-emoji', 2.5, 20);
+                }, i * 70);
             }
             
             // Burst balloons continuously
             const burstInterval = setInterval(() => {
                 burstRandomBalloon();
-            }, 300);
+            }, 250);
             
-            // Stop bursting after 10 seconds
+            // Create fireworks continuously
+            const fireworkInterval = setInterval(() => {
+                createFirework();
+            }, 800);
+            
+            // Stop effects after 15 seconds
             setTimeout(() => {
                 clearInterval(burstInterval);
-            }, 10000);
+                clearInterval(fireworkInterval);
+            }, 15000);
         }
         
         // Initialize first question
